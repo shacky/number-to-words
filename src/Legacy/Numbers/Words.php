@@ -42,14 +42,14 @@ class Words
 
         $currencies = new ISOCurrencies();
         $currencyObject = new Currency($currency);
-        
+
         try {
             $subunit = $currencies->subunitFor($currencyObject);
         } catch (UnknownCurrencyException $e) {
             // Fallback to 2 decimal places for unknown currencies
             $subunit = 2;
         }
-        
+
         $divisor = (int) (10 ** $subunit);
 
         $decimalPart = (int) ($amount / $divisor);

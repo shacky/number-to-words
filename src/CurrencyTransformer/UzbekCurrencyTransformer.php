@@ -13,6 +13,7 @@ use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
 class UzbekCurrencyTransformer implements CurrencyTransformer
 {
     use CurrencySubunitSplitter;
+
     public function toWords(int $amount, string $currency, ?CurrencyTransformerOptions $options = null): string
     {
         $dictionary = new UzbekDictionary();

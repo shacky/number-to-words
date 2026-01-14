@@ -16,6 +16,7 @@ use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
 class BulgarianCurrencyTransformer implements CurrencyTransformer
 {
     use CurrencySubunitSplitter;
+
     public function toWords(int $amount, string $currency, ?CurrencyTransformerOptions $options = null): string
     {
         $currencyCode = strtoupper($currency);

@@ -13,6 +13,7 @@ use NumberToWords\Service\NumberToTripletsConverter;
 class ArabicCurrencyTransformer implements CurrencyTransformer
 {
     use CurrencySubunitSplitter;
+
     /**
      * {@inheritdoc}
      *
