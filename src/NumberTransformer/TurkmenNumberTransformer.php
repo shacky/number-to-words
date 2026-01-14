@@ -2,14 +2,27 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Language\Turkmen\TurkmenDictionary;
+use NumberToWords\Language\Turkmen\TurkmenExponentGetter;
+use NumberToWords\Language\Turkmen\TurkmenTripletTransformer;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class TurkmenNumberTransformer implements NumberTransformer
 {
     public function toWords(int $number): string
     {
-        $converter = new Words();
+        $dictionary = new TurkmenDictionary();
+        $numberToTripletsConverter = new NumberToTripletsConverter();
+        $tripletTransformer = new TurkmenTripletTransformer($dictionary);
+        $exponentGetter = new TurkmenExponentGetter();
 
-        return $converter->transformToWords($number, 'tk');
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy(' ')
+            ->transformNumbersBySplittingIntoTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->useRegularExponents($exponentGetter)
+            ->build();
+
+        return $numberTransformer->toWords($number);
     }
 }

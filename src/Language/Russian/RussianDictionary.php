@@ -1,78 +1,82 @@
 <?php
 
-namespace NumberToWords\Legacy\Numbers\Words\Locale;
+namespace NumberToWords\Language\Russian;
 
-use NumberToWords\Exception\NumberToWordsException;
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Language\Dictionary;
 
-class Ru extends Words
+class RussianDictionary implements Dictionary
 {
-    const LOCALE = 'ru';
-    const LANGUAGE_NAME = 'Russian';
-    const LANGUAGE_NAME_NATIVE = 'Русский';
-    const MINUS = 'минус';
+    public const LOCALE = 'ru';
+    public const LANGUAGE_NAME = 'Russian';
+    public const LANGUAGE_NAME_NATIVE = 'Русский';
 
-    const MALE = 0;
-    const FEMALE = 1;
-    const NEUTER = 2;
-
-    protected $zero = 'ноль';
-
-    protected static $ten = [
-        ['', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'],
-        ['', 'одна', 'две', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'],
+    // Male gender units
+    private static array $unitsMale = [
+        0 => '',
+        1 => 'один',
+        2 => 'два',
+        3 => 'три',
+        4 => 'четыре',
+        5 => 'пять',
+        6 => 'шесть',
+        7 => 'семь',
+        8 => 'восемь',
+        9 => 'девять',
     ];
 
-    protected static $teens = [
-        'десять',
-        'одиннадцать',
-        'двенадцать',
-        'тринадцать',
-        'четырнадцать',
-        'пятнадцать',
-        'шестнадцать',
-        'семнадцать',
-        'восемнадцать',
-        'девятнадцать',
+    // Female gender units (used for thousands)
+    private static array $unitsFemale = [
+        0 => '',
+        1 => 'одна',
+        2 => 'две',
+        3 => 'три',
+        4 => 'четыре',
+        5 => 'пять',
+        6 => 'шесть',
+        7 => 'семь',
+        8 => 'восемь',
+        9 => 'девять',
     ];
 
-    protected static $tens = [
+    private static array $teens = [
+        0 => 'десять',
+        1 => 'одиннадцать',
+        2 => 'двенадцать',
+        3 => 'тринадцать',
+        4 => 'четырнадцать',
+        5 => 'пятнадцать',
+        6 => 'шестнадцать',
+        7 => 'семнадцать',
+        8 => 'восемнадцать',
+        9 => 'девятнадцать',
+    ];
+
+    private static array $tens = [
+        0 => '',
+        1 => 'десять',
         2 => 'двадцать',
-        'тридцать',
-        'сорок',
-        'пятьдесят',
-        'шестьдесят',
-        'семьдесят',
-        'восемьдесят',
-        'девяносто',
+        3 => 'тридцать',
+        4 => 'сорок',
+        5 => 'пятьдесят',
+        6 => 'шестьдесят',
+        7 => 'семьдесят',
+        8 => 'восемьдесят',
+        9 => 'девяносто',
     ];
 
-    protected static $hundred = [
-        '',
-        'сто',
-        'двести',
-        'триста',
-        'четыреста',
-        'пятьсот',
-        'шестьсот',
-        'семьсот',
-        'восемьсот',
-        'девятьсот',
+    private static array $hundreds = [
+        0 => '',
+        1 => 'сто',
+        2 => 'двести',
+        3 => 'триста',
+        4 => 'четыреста',
+        5 => 'пятьсот',
+        6 => 'шестьсот',
+        7 => 'семьсот',
+        8 => 'восемьсот',
+        9 => 'девятьсот',
     ];
-
-    protected static $mega = [
-        [3 => self::FEMALE],
-        [3 => self::MALE],
-        ['тысяча', 'тысячи', 'тысяч', self::FEMALE],
-        ['миллион', 'миллиона', 'миллионов', self::MALE],
-        ['миллиард', 'милиарда', 'миллиардов', self::MALE],
-        ['триллион', 'триллиона', 'триллионов', self::MALE],
-        ['квадриллион', 'квадриллиона', 'квадриллионов', self::MALE],
-        ['секстиллион', 'секстиллиона', 'секстиллионов', self::MALE],
-    ];
-
-
-    protected static $currencyNames = [
+    public static $currencyNames = [
         'ALL' => [
             [1, 'лек', 'лека', 'леков'],
             [2, 'киндарка', 'киндарки', 'киндарок']
@@ -263,164 +267,40 @@ class Ru extends Words
         ]
     ];
 
-    /**
-     * @param int $n
-     * @param string $f1
-     * @param string $f2
-     * @param string $f5
-     *
-     * @return string
-     */
-    public function morph($n, $f1, $f2, $f5)
-    {
-        $n = abs((int) $n) % 100;
-        if ($n > 10 && $n < 20) {
-            return $f5;
-        }
-        $n = $n % 10;
-        if ($n > 1 && $n < 5) {
-            return $f2;
-        }
-        if ($n == 1) {
-            return $f1;
-        }
 
-        return $f5;
+
+    public function getZero(): string
+    {
+        return 'ноль';
     }
 
-    /**
-     * @param int $number
-     * @param int $currencyGender
-     *
-     * @return string
-     */
-    protected function toWords($number, $currencyGender = -1)
+    public function getMinus(): string
     {
-        if ($number === 0) {
-            return $this->zero;
-        }
-
-        $out = [];
-
-        if ($number < 0) {
-            $out[] = static::MINUS;
-            $number *= -1;
-        }
-
-        $megaSize = count(static::$mega);
-        $signs = $megaSize * 3;
-
-        // $signs equal quantity of zeros of the biggest number in self::$mega
-        // + 3 additional sign (point and two zero)
-        [$unit, $subunit] = explode('.', sprintf("%{$signs}.2F", (float) $number));
-
-        foreach (str_split($unit, 3) as $megaKey => $value) {
-            if (!(int) $value) {
-                continue;
-            }
-
-            $megaKey = $megaSize - $megaKey - 1;
-            $gender = $megaKey === 1 && $currencyGender !== -1 ? $currencyGender : static::$mega[$megaKey][3];
-            [$i1, $i2, $i3] = array_map('intval', str_split($value, 1));
-            // mega-logic
-            $out[] = static::$hundred[$i1]; # 1xx-9xx
-
-            if ($i2 > 1) { # 20-99
-                $out[] = static::$tens[$i2] . ' ' . static::$ten[$gender][$i3];
-            } else { # 10-19 | 1-9
-                $out[] = ($i2 > 0) ? static::$teens[$i3] : static::$ten[$gender][$i3];
-            }
-
-            if ($megaKey > 1) {
-                $out[] = $this->morph(
-                    $value,
-                    static::$mega[$megaKey][0],
-                    static::$mega[$megaKey][1],
-                    static::$mega[$megaKey][2]
-                );
-            }
-        }
-
-        return trim(preg_replace('/\s+/', ' ', implode(' ', $out)));
+        return 'минус';
     }
 
-    /**
-     * @param string $currency
-     * @param int $decimal
-     * @param int $fraction
-     *
-     * @return string
-     * @throws NumberToWordsException
-     */
-    public function toCurrencyWords($currency, $decimal, $fraction = null)
+    public function getCorrespondingUnit(int $unit): string
     {
-        $currency = strtoupper($currency);
+        return self::$unitsMale[$unit];
+    }
 
-        if (!array_key_exists($currency, static::$currencyNames)) {
-            throw new NumberToWordsException(
-                sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
-            );
-        }
+    public function getCorrespondingUnitFemale(int $unit): string
+    {
+        return self::$unitsFemale[$unit];
+    }
 
-        $currencyNames = static::$currencyNames[$currency];
-        $return = '';
+    public function getCorrespondingTen(int $ten): string
+    {
+        return self::$tens[$ten];
+    }
 
-        if ($decimal === 0 && !$fraction) {
-            $return .= $this->toWords($decimal) . ' ' . $this->morph(
-                    $decimal,
-                    $currencyNames[0][1],
-                    $currencyNames[0][2],
-                    $currencyNames[0][3]
-                );
+    public function getCorrespondingTeen(int $teen): string
+    {
+        return self::$teens[$teen];
+    }
 
-            return $return;
-        }
-
-        if ($decimal || (0 === $decimal && $this->options->isShowDecimalIfZero())) {
-            $return .= $this->toWords($decimal, $currencyNames[0][0] - 1) . ' ' . $this->morph(
-                    $decimal,
-                    $currencyNames[0][1],
-                    $currencyNames[0][2],
-                    $currencyNames[0][3]
-                );
-        }
-
-        if (null !== $fraction) {
-            if ($this->options->isConvertFraction()) {
-                $return .= ' ' . $this->toWords($fraction, $currencyNames[1][0] - 1) . ' ' . $this->morph(
-                        $fraction,
-                        $currencyNames[1][1],
-                        $currencyNames[1][2],
-                        $currencyNames[1][3]
-                    );
-            } else {
-                $return .= ' ' . $fraction . ' ' . $this->morph(
-                        $fraction,
-                        $currencyNames[1][1],
-                        $currencyNames[1][2],
-                        $currencyNames[1][3]
-                    );
-            }
-        }
-
-        if (null === $fraction && $this->options->isShowFractionIfZero()) {
-            if ($this->options->isConvertFractionIfZero()) {
-                $return .= ' ' . $this->zero . ' ' . $this->morph(
-                        $fraction,
-                        $currencyNames[1][1],
-                        $currencyNames[1][2],
-                        $currencyNames[1][3]
-                    );
-            } else {
-                $return .= ' 00 ' . $this->morph(
-                        $fraction,
-                        $currencyNames[1][1],
-                        $currencyNames[1][2],
-                        $currencyNames[1][3]
-                    );
-            }
-        }
-
-        return $return;
+    public function getCorrespondingHundred(int $hundred): string
+    {
+        return self::$hundreds[$hundred];
     }
 }

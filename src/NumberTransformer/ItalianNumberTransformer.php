@@ -2,14 +2,27 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Language\Italian\ItalianDictionary;
+use NumberToWords\Language\Italian\ItalianExponentInflector;
+use NumberToWords\Language\Italian\ItalianTripletTransformer;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class ItalianNumberTransformer implements NumberTransformer
 {
     public function toWords(int $number): string
     {
-        $converter = new Words();
+        $dictionary = new ItalianDictionary();
+        $numberToTripletsConverter = new NumberToTripletsConverter();
+        $tripletTransformer = new ItalianTripletTransformer($dictionary);
+        $exponentInflector = new ItalianExponentInflector();
 
-        return $converter->transformToWords($number, 'it');
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy('')
+            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->inflectExponentByNumbers($exponentInflector)
+            ->build();
+
+        return $numberTransformer->toWords($number);
     }
 }

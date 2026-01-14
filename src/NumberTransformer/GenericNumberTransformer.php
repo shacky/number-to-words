@@ -5,6 +5,7 @@ namespace NumberToWords\NumberTransformer;
 use NumberToWords\Language\Dictionary;
 use NumberToWords\Language\ExponentGetter;
 use NumberToWords\Language\ExponentInflector;
+use NumberToWords\Language\PowerAwareExponentInflector;
 use NumberToWords\Language\PowerAwareTripletTransformer;
 use NumberToWords\Language\TripletTransformer;
 use NumberToWords\Service\NumberToTripletsConverter;
@@ -45,9 +46,13 @@ class GenericNumberTransformer implements NumberTransformer
     {
         $words = [];
         $triplets = $this->numberToTripletsConverter->convertToTriplets($number);
+        $maxPower = count($triplets) - 1;
+        $nonZeroTripletCount = count(array_filter($triplets, fn($t) => $t > 0));
 
         foreach ($triplets as $i => $triplet) {
             if ($triplet > 0) {
+                $power = count($triplets) - $i - 1;
+                
                 if ($this->tripletTransformer !== null) {
                     $words[] = $this->tripletTransformer->transformToWords($triplet);
                 }
@@ -55,7 +60,7 @@ class GenericNumberTransformer implements NumberTransformer
                 if ($this->powerAwareTripletTransformer !== null) {
                     $tripletTransformResult = $this->powerAwareTripletTransformer->transformToWords(
                         $triplet,
-                        count($triplets) - $i - 1
+                        $power
                     );
 
                     if ($tripletTransformResult !== null) {
@@ -64,11 +69,16 @@ class GenericNumberTransformer implements NumberTransformer
                 }
 
                 if ($this->exponentInflector !== null) {
-                    $words[] = $this->exponentInflector->inflectExponent($triplet, count($triplets) - $i - 1);
+                    // Use PowerAwareExponentInflector if available, otherwise fall back to regular
+                    if ($this->exponentInflector instanceof PowerAwareExponentInflector) {
+                        $words[] = $this->exponentInflector->inflectExponentWithContext($triplet, $power, $maxPower, $nonZeroTripletCount);
+                    } else {
+                        $words[] = $this->exponentInflector->inflectExponent($triplet, $power);
+                    }
                 }
 
                 if ($this->exponentGetter !== null) {
-                    $words[] = $this->exponentGetter->getExponent(count($triplets) - $i - 1);
+                    $words[] = $this->exponentGetter->getExponent($power);
                 }
             }
         }
