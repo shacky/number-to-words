@@ -44,33 +44,10 @@ class TurkmenCurrencyTransformer implements CurrencyTransformer
 
         $currencyNames = TurkmenDictionary::$currencyNames[$currency];
 
-        $return = trim($numberTransformer->toWords($decimal));
-        $level = ($decimal === 1) ? 0 : 1;
-
-        if ($level > 0) {
-            if (count($currencyNames[0]) > 1) {
-                $return .= ' ' . $currencyNames[0][$level];
-            } else {
-                $return .= ' ' . $currencyNames[0][0];
-            }
-        } else {
-            $return .= ' ' . $currencyNames[0][0];
-        }
+        $return = trim($numberTransformer->toWords($decimal)) . ' ' . $currencyNames[0];
 
         if (null !== $fraction) {
-            $return .= ' ' . trim($numberTransformer->toWords($fraction));
-
-            $level = $fraction === 1 ? 0 : 1;
-
-            if ($level > 0) {
-                if (count($currencyNames[1]) > 1) {
-                    $return .= ' ' . $currencyNames[1][$level];
-                } else {
-                    $return .= ' ' . $currencyNames[1][0];
-                }
-            } else {
-                $return .= ' ' . $currencyNames[1][0];
-            }
+            $return .= ' ' . trim($numberTransformer->toWords($fraction)) . ' ' . $currencyNames[1];
         }
 
         return $return;

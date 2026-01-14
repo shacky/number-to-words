@@ -5,7 +5,9 @@ namespace NumberToWords\CurrencyTransformer;
 use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\Language\Russian\RussianDictionary;
 use NumberToWords\Language\Russian\RussianExponentInflector;
+use NumberToWords\Language\Russian\RussianNounGenderInflector;
 use NumberToWords\Language\Russian\RussianTripletTransformer;
+use NumberToWords\NumberTransformer\NumberTransformer;
 use NumberToWords\NumberTransformer\NumberTransformerBuilder;
 use NumberToWords\Service\NumberToTripletsConverter;
 use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
@@ -20,6 +22,7 @@ class RussianCurrencyTransformer implements CurrencyTransformer
         $numberToTripletsConverter = new NumberToTripletsConverter();
         $tripletTransformer = new RussianTripletTransformer($dictionary);
         $exponentInflector = new RussianExponentInflector();
+        $nounGenderInflector = new RussianNounGenderInflector();
 
         $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
@@ -44,35 +47,67 @@ class RussianCurrencyTransformer implements CurrencyTransformer
 
         $currencyNames = RussianDictionary::$currencyNames[$currency];
 
-        $return = trim($numberTransformer->toWords($decimal));
-        $level = ($decimal === 1) ? 0 : 1;
+        $words = [];
 
-        if ($level > 0) {
-            if (count($currencyNames[0]) > 1) {
-                $return .= ' ' . $currencyNames[0][$level];
-            } else {
-                $return .= ' ' . $currencyNames[0][0];
-            }
-        } else {
-            $return .= ' ' . $currencyNames[0][0];
+        // Main currency amount - only output if non-zero or if there's no fraction
+        if ($decimal !== 0 || $fraction === null) {
+            $mainGender = $currencyNames[0][0];
+            $words[] = $this->convertNumberWithGender($decimal, $mainGender, $dictionary, $numberTransformer);
+            $words[] = $nounGenderInflector->inflectNounByNumber(
+                $decimal,
+                $currencyNames[0][1],
+                $currencyNames[0][2],
+                $currencyNames[0][3]
+            );
         }
 
         if (null !== $fraction) {
-            $return .= ' ' . trim($numberTransformer->toWords($fraction));
+            // Subunit amount
+            $subGender = $currencyNames[1][0];
+            $words[] = $this->convertNumberWithGender($fraction, $subGender, $dictionary, $numberTransformer);
+            $words[] = $nounGenderInflector->inflectNounByNumber(
+                $fraction,
+                $currencyNames[1][1],
+                $currencyNames[1][2],
+                $currencyNames[1][3]
+            );
+        }
 
-            $level = $fraction === 1 ? 0 : 1;
+        return implode(' ', $words);
+    }
 
-            if ($level > 0) {
-                if (count($currencyNames[1]) > 1) {
-                    $return .= ' ' . $currencyNames[1][$level];
-                } else {
-                    $return .= ' ' . $currencyNames[1][0];
-                }
-            } else {
-                $return .= ' ' . $currencyNames[1][0];
+    /**
+     * Convert a number to words using the appropriate gender
+     *
+     * @param int $number Number to convert
+     * @param int $gender Gender (0=neuter, 1=masculine, 2=feminine)
+     * @param RussianDictionary $dictionary
+     * @param NumberTransformer $numberTransformer
+     * @return string
+     */
+    private function convertNumberWithGender(
+        int $number,
+        int $gender,
+        RussianDictionary $dictionary,
+        NumberTransformer $numberTransformer
+    ): string {
+        // For feminine gender, override numbers ending in 1 or 2 (but not 11-19)
+        if ($gender === 2) {
+            $units = abs($number) % 10;
+            $tens = (int) (abs($number) / 10) % 10;
+
+            if ($units === 1 && $tens !== 1) {
+                // Numbers ending in 1 (but not 11): replace "один" with "одна"
+                $words = $numberTransformer->toWords($number);
+                return preg_replace('/(?<![а-яА-ЯёЁ])один(?![а-яА-ЯёЁ])/u', 'одна', $words);
+            }
+            if ($units === 2 && $tens !== 1) {
+                // Numbers ending in 2 (but not 12): replace "два" with "две"
+                $words = $numberTransformer->toWords($number);
+                return preg_replace('/(?<![а-яА-ЯёЁ])два(?![а-яА-ЯёЁ])/u', 'две', $words);
             }
         }
 
-        return $return;
+        return $numberTransformer->toWords($number);
     }
 }

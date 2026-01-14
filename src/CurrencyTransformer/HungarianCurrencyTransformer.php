@@ -21,13 +21,6 @@ class HungarianCurrencyTransformer implements CurrencyTransformer
         $tripletTransformer = new HungarianTripletTransformer($dictionary);
         $exponentGetter = new HungarianExponentGetter();
 
-        $numberTransformer = (new NumberTransformerBuilder())
-            ->withDictionary($dictionary)
-            ->withWordsSeparatedBy('')
-            ->transformNumbersBySplittingIntoTriplets($numberToTripletsConverter, $tripletTransformer)
-            ->useRegularExponents($exponentGetter)
-            ->build();
-
         [$decimal, $fraction] = $this->splitAmount($amount, $currency);
 
         if ($fraction === 0) {
@@ -44,6 +37,19 @@ class HungarianCurrencyTransformer implements CurrencyTransformer
 
         $currencyNames = HungarianDictionary::$currencyNames[$currency];
 
+        // Build number transformer with conditional separator for decimal part
+        $builder = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy('')
+            ->transformNumbersBySplittingIntoTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->useRegularExponents($exponentGetter);
+
+        if ($decimal >= 2000 || $decimal <= -2000) {
+            $builder = $builder->withExponentsSeparatedBy('-');
+        }
+
+        $numberTransformer = $builder->build();
+
         $return = trim($numberTransformer->toWords($decimal));
         $level = ($decimal === 1) ? 0 : 1;
 
@@ -58,7 +64,20 @@ class HungarianCurrencyTransformer implements CurrencyTransformer
         }
 
         if (null !== $fraction) {
-            $return .= ' ' . trim($numberTransformer->toWords($fraction));
+            // Rebuild transformer for fraction part with conditional separator
+            $builder = (new NumberTransformerBuilder())
+                ->withDictionary($dictionary)
+                ->withWordsSeparatedBy('')
+                ->transformNumbersBySplittingIntoTriplets($numberToTripletsConverter, $tripletTransformer)
+                ->useRegularExponents($exponentGetter);
+
+            if ($fraction >= 2000 || $fraction <= -2000) {
+                $builder = $builder->withExponentsSeparatedBy('-');
+            }
+
+            $fractionTransformer = $builder->build();
+
+            $return .= ' ' . trim($fractionTransformer->toWords($fraction));
 
             $level = $fraction === 1 ? 0 : 1;
 
