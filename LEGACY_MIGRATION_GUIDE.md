@@ -124,9 +124,27 @@ vendor/bin/phpunit --filter SpanishNumberTransformerTest
 ```
 
 ## Estimated Effort
-- Simple language (like Slovak): 2-3 hours
-- Complex language (like Polish): 4-6 hours  
-- Architectural changes (like Bulgarian): 8-12 hours
+
+**Simple Language** (2-3 hours):
+- Standard number patterns (0-999 follow predictable rules)
+- Uses `TripletTransformer` interface
+- Simple exponent naming (thousand, million, billion)
+- No grammatical gender complications
+- Examples: English, Czech (similar to Slovak)
+
+**Complex Language** (4-6 hours):
+- Grammatical gender inflection (numbers change based on noun gender)
+- Irregular patterns in certain ranges
+- Uses `PowerAwareTripletTransformer` interface
+- Multiple forms for exponents based on number
+- Requires `NounGenderInflector`
+- Examples: Polish, Slovak, German
+
+**Architectural Changes** (8-12 hours):
+- Requires custom conjunction/separator logic
+- Stateful transformations across triplets
+- May need custom `NumberTransformer` implementation
+- Examples: Bulgarian (conjunction between exponents)
 
 ## Questions?
 Refer to existing implementations in `src/Language/` and `src/NumberTransformer/`.
