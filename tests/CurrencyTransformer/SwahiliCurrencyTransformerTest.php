@@ -29,7 +29,7 @@ class SwahiliCurrencyTransformerTest extends CurrencyTransformerTest
             [584600, 'USD', 'Dola za Marekani elfu tano, mia nane na arobaini na sita'],
             [645900, 'USD', 'Dola za Marekani elfu sita, mia nne na hamsini na tisa'],
             [723200, 'USD', 'Dola za Marekani elfu saba, mia mbili na thelathini na mbili'],
-            [-72925, 'UGX', 'Shilingi za Uganda kasoro mia saba na ishirini na tisa na senti ishirini na tano'],
+            [-72925, 'UGX', 'Shilingi za Uganda kasoro elfu sabini na mbili, mia tisa na ishirini na tano'],
             [-89425, 'USD', 'Dola za Marekani kasoro mia nane na tisini na nne na senti ishirini na tano'],
             [-99925, 'USD', 'Dola za Marekani kasoro mia tisa na tisini na tisa na senti ishirini na tano'],
         ];

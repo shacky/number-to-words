@@ -15,17 +15,19 @@ use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
 
 class BulgarianCurrencyTransformer implements CurrencyTransformer
 {
+    use CurrencySubunitSplitter;
+
     public function toWords(int $amount, string $currency, ?CurrencyTransformerOptions $options = null): string
     {
-        $currency = strtoupper($currency);
+        $currencyCode = strtoupper($currency);
 
-        if (!array_key_exists($currency, BulgarianDictionary::CURRENCY)) {
+        if (!array_key_exists($currencyCode, BulgarianDictionary::CURRENCY)) {
             throw new NumberToWordsException(
-                sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
+                sprintf('Currency "%s" is not available for "%s" language', $currencyCode, get_class($this))
             );
         }
 
-        $currency = BulgarianDictionary::CURRENCY[$currency];
+        $currency = BulgarianDictionary::CURRENCY[$currencyCode];
 
         $dictionary = new BulgarianDictionary();
         $nounGenderInflector = new BulgarianNounGenderInflector();
@@ -46,9 +48,7 @@ class BulgarianCurrencyTransformer implements CurrencyTransformer
                 );
         $exponentInflector = new BulgarianExponentInflector($nounGenderInflector);
 
-        $decimal = (int) ($amount / 100);
-
-        $fraction = abs($amount % 100);
+        [$decimal, $fraction] = $this->splitAmount($amount, $currencyCode);
 
         if ($fraction === 0) {
             $fraction = null;

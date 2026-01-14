@@ -14,6 +14,8 @@ use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
 
 class SerbianCurrencyTransformer implements CurrencyTransformer
 {
+    use CurrencySubunitSplitter;
+
     public function toWords(int $amount, string $currency, ?CurrencyTransformerOptions $options = null): string
     {
         $dictionary = new SerbianDictionary();
@@ -30,8 +32,7 @@ class SerbianCurrencyTransformer implements CurrencyTransformer
             ->inflectExponentByNumbers($exponentInflector)
             ->build();
 
-        $decimal = (int) ($amount / 100);
-        $fraction = abs($amount % 100);
+        [$decimal, $fraction] = $this->splitAmount($amount, $currency);
 
         if ($fraction === 0) {
             $fraction = null;
