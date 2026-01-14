@@ -81,7 +81,8 @@ Need complete migration (no Language/ folder exists):
    ```
 
 7. **Test**
-   - Run existing tests: `vendor/bin/phpunit --filter [Language]NumberTransformerTest`
+   - Run existing tests for the language
+   - Example: `vendor/bin/phpunit --filter CzechNumberTransformerTest`
    - All tests must pass before migration is complete
 
 ## Templates
@@ -117,7 +118,9 @@ vendor/bin/phpunit --no-coverage
 
 Test specific language:
 ```bash
-vendor/bin/phpunit --filter [Language]NumberTransformerTest
+# Replace [Language] with actual language name, e.g.:
+vendor/bin/phpunit --filter CzechNumberTransformerTest
+vendor/bin/phpunit --filter SpanishNumberTransformerTest
 ```
 
 ## Estimated Effort
