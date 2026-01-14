@@ -9,13 +9,13 @@ use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
 
 class LithuanianCurrencyTransformer implements CurrencyTransformer
 {
+    use CurrencySubunitSplitter;
     public function toWords(int $amount, string $currency, ?CurrencyTransformerOptions $options = null): string
     {
         $dictionary = new LithuanianDictionary();
         $numberTransformer = new LithuanianNumberTransformer();
 
-        $decimal = (int) ($amount / 100);
-        $fraction = abs($amount % 100);
+        [$decimal, $fraction] = $this->splitAmount($amount, $currency);
 
         if ($fraction === 0) {
             $fraction = null;

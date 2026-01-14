@@ -2,6 +2,9 @@
 
 namespace NumberToWords\Legacy\Numbers;
 
+use Money\Currencies\ISOCurrencies;
+use Money\Currency;
+use Money\Exception\UnknownCurrencyException;
 use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
 use NumberToWords\Exception\NumberToWordsException;
 
@@ -37,8 +40,20 @@ class Words
         $localeClassName = $this->resolveLocaleClassName($locale);
         $transformer = new $localeClassName($this->options);
 
-        $decimalPart = (int) ($amount / 100);
-        $fractionalPart = abs($amount % 100);
+        $currencies = new ISOCurrencies();
+        $currencyObject = new Currency($currency);
+        
+        try {
+            $subunit = $currencies->subunitFor($currencyObject);
+        } catch (UnknownCurrencyException $e) {
+            // Fallback to 2 decimal places for unknown currencies
+            $subunit = 2;
+        }
+        
+        $divisor = (int) (10 ** $subunit);
+
+        $decimalPart = (int) ($amount / $divisor);
+        $fractionalPart = abs($amount % $divisor);
 
         if ($fractionalPart === 0) {
             return trim($transformer->toCurrencyWords($currency, $decimalPart));

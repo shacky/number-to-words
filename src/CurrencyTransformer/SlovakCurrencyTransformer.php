@@ -13,6 +13,7 @@ use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
 
 class SlovakCurrencyTransformer implements CurrencyTransformer
 {
+    use CurrencySubunitSplitter;
     public function toWords(int $amount, string $currency, ?CurrencyTransformerOptions $options = null): string
     {
         $dictionary = new SlovakDictionary();
@@ -28,8 +29,7 @@ class SlovakCurrencyTransformer implements CurrencyTransformer
             ->inflectExponentByNumbers($exponentInflector)
             ->build();
 
-        $decimal = (int) ($amount / 100);
-        $fraction = $amount % 100;
+        [$decimal, $fraction] = $this->splitAmount($amount, $currency);
 
         if ($fraction === 0) {
             $fraction = null;
