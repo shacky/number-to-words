@@ -22,6 +22,46 @@ class HungarianDictionary implements Dictionary
         8 => 'nyolc',
         9 => 'kilenc',
     ];
+    public static $currencyNames = [
+        'ALL' => [['lek'], ['qindarke']],
+        'AUD' => [['ausztrál dollár'], ['cent']],
+        'BAM' => [['konvertibilis márka'], ['pfening']],
+        'BGN' => [['leva'], ['sztotinka']],
+        'BRL' => [['real'], ['centavo']],
+        'BYR' => [['belarusz rubel'], ['kopejka']],
+        'BYN' => [['belarusz rubel'], ['kopejka']],
+        'CAD' => [['kanadai dollár'], ['cent']],
+        'CHF' => [['svájci frank'], ['rappen']],
+        'CYP' => [['ciprusi font'], ['cent']],
+        'CZK' => [['cseh korona'], ['halér']],
+        'DKK' => [['dán korona'], ['őre']],
+        'EEK' => [['észt korona'], ['sent']],
+        'EUR' => [['euró'], ['cent']],
+        'GBP' => [['font'], ['penny']],
+        'HKD' => [['hongkongi dollár'], ['cent']],
+        'HRK' => [['kuna'], ['lipa']],
+        'HUF' => [['forint'], ['fillér']],
+        'ILS' => [['sékel'], ['agora']],
+        'ISK' => [['izlandi korona'], ['aurar']],
+        'JPY' => [['jen'], ['szen']],
+        'LTL' => [['litas'], ['cent']],
+        'LVL' => [['lat'], ['santim']],
+        'MKD' => [['macedón dénár'], ['deni']],
+        'MTL' => [['máltai líra'], ['cent']],
+        'NOK' => [['norvég korona'], ['őre']],
+        'PLN' => [['zloty'], ['grosz']],
+        'ROL' => [['lej'], ['bani']],
+        'RUB' => [['orosz rubel'], ['kopejka']],
+        'SEK' => [['svéd korona'], ['őre']],
+        'SIT' => [['tolár'], ['sztotin']],
+        'TRL' => [['lira'], ['kuruþ']],
+        'TRY' => [['lira'], ['kuruþ']],
+        'UAH' => [['hrivnya'], ['kopejka']],
+        'USD' => [['dollár'], ['cent']],
+        'ZAR' => [['rand'], ['cent']]
+    ];
+
+
 
     public function getZero(): string
     {

@@ -48,6 +48,24 @@ class DanishDictionary implements Dictionary
         8 => 'firs',
         9 => 'halvfems',
     ];
+    public static $currencyNames = [
+        'AUD' => [['australsk dollar', 'australske dollars'], ['cent']],
+        'CAD' => [['canadisk dollar', 'canadisk dollars'], ['cent']],
+        'CHF' => [['schweitzer franc'], ['rappen']],
+        'CYP' => [['cypriotisk pund', 'cypriotiske pund'], ['cent']],
+        'CZK' => [['tjekkisk koruna'], ['halerz']],
+        'DKK' => [['krone', 'kroner'], ['øre']],
+        'EUR' => [['euro'], ['euro-cent']],
+        'GBP' => [['pund'], ['pence']],
+        'HKD' => [['Hong Kong dollar', 'Hong Kong dollars'], ['cent']],
+        'JPY' => [['yen'], ['sen']],
+        'NOK' => [['norsk krone', 'norske kroner'], ['øre']],
+        'PLN' => [['zloty', 'zlotys'], ['grosz']],
+        'SEK' => [['svensk krone', 'svenske kroner'], ['öre']],
+        'USD' => [['dollar', 'dollars'], ['cent']]
+    ];
+
+
 
     public function getZero(): string
     {

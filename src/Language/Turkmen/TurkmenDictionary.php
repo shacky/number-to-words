@@ -35,6 +35,18 @@ class TurkmenDictionary implements Dictionary
         8 => 'segsen',
         9 => 'togsan',
     ];
+    public static $currencyNames = [
+        'USD' => [
+            'dollar',
+            'sent'
+        ],
+        'TMT' => [
+            'manat',
+            'teňňe'
+        ],
+    ];
+
+
 
     public function getZero(): string
     {
