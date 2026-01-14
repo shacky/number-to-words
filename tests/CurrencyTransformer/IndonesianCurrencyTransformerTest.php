@@ -30,7 +30,7 @@ class IndonesianCurrencyTransformerTest extends CurrencyTransformerTest
             [584600, 'USD', 'lima ribu delapan ratus empat puluh enam dolar'],
             [645900, 'USD', 'enam ribu empat ratus lima puluh sembilan dolar'],
             [723200, 'USD', 'tujuh ribu dua ratus tiga puluh dua dolar'],
-            [123456789, 'XPF', 'satu juta dua ratus tiga puluh empat ribu lima ratus enam puluh tujuh franc CFP delapan puluh sembilan sen'],
+            [123456789, 'XPF', 'seratus dua puluh tiga juta empat ratus lima puluh enam ribu tujuh ratus delapan puluh sembilan franc CFP'],
             [-72925, 'USD', 'minus tujuh ratus dua puluh sembilan dolar dua puluh lima sen'],
             [-89425, 'USD', 'minus delapan ratus sembilan puluh empat dolar dua puluh lima sen'],
             [-99925, 'USD', 'minus sembilan ratus sembilan puluh sembilan dolar dua puluh lima sen'],
