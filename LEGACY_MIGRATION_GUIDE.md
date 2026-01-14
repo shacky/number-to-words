@@ -5,28 +5,43 @@ This document guides the migration of language implementations from `src/Legacy/
 
 ## Migration Status
 
-### ✅ Completed Migrations
-These languages already use `NumberTransformerBuilder`:
+### ✅ Completed Migrations (23 languages)
+These languages now use `NumberTransformerBuilder` exclusively. Legacy implementations have been removed:
+
+**Originally Migrated:**
 - English, Polish, German, Slovak, Serbian
 - Azerbaijani, Albanian, Arabic, Kurdish
 - Latvian, Persian, Uzbek
 
-### ⚠️ Partial Migrations  
+**Newly Migrated in This PR:**
+- **Czech (Cs)** - 139 tests - Uses PowerAwareTripletTransformer with gender inflection
+- **Turkish (Tr)** - 47 tests - PowerAwareTripletTransformer for "bin" without "bir"
+- **Turkmen (Tk)** - 66 tests - Simple space-separated concatenation
+- **Swedish (Sv)** - 22 tests - Regular TripletTransformer
+- **Danish (Dk)** - 12 tests - Regular TripletTransformer
+- **Ukrainian (Ua)** - 42 tests - Gender-aware (male/female) with Slavic inflection
+- **Russian (Ru)** - 71 tests - Gender-aware (male/female) with Slavic inflection
+- **Spanish (Es)** - 91 tests - Complex patterns: cien/ciento, veinti-compounds, long scale
+- **Estonian (Et)** - 47 tests - Compound words (unit+"sada", unit+"kümmend")
+- **Hungarian (Hu)** - 96 tests - Compound words with conditional separator
+- **Italian (It)** - Vowel elision, conditional spacing, mille/mila inflection
+
+### ⚠️ Partial Migrations (4 languages)
 These have `Language/` components but `NumberTransformer` still uses Legacy:
 - **Bulgarian** - Has all components but needs architectural enhancement for conjunction logic
 - **Lithuanian** - Only has Dictionary
 - **Romanian** - Only has Dictionary
 - **French** - Only has BelgianDictionary
 
-### ❌ Pending Migrations
+### ❌ Pending Migrations (9 languages)
 Need complete migration (no Language/ folder exists):
-- Czech (Cs), Danish (Dk), Spanish (Es), Estonian (Et)
-- Hungarian (Hu), Indonesian (Id), Italian (It), Georgian (Ka)
-- Macedonian (Mk), Malay (Ms), Dutch (Nl)
+- Indonesian (Id), Georgian (Ka), Macedonian (Mk)
+- Malay (Ms), Dutch (Nl)
 - Portuguese Portugal (Pt/Pt), Portuguese Brazil (Pt/Br)
-- Russian (Ru), Swedish (Sv), Swahili (Sw)
-- Turkmen (Tk), Turkish (Tr), Ukrainian (Ua), Yoruba (Yo)
+- Swahili (Sw), Yoruba (Yo)
 - French Belgian (Fr/Be)
+
+**Progress:** 23 of 36 languages fully migrated (64%)
 
 ## Migration Steps
 
@@ -92,10 +107,32 @@ Need complete migration (no Language/ folder exists):
 - **German** - Uses PowerAwareTripletTransformer
 - **English** - Simple language with ExponentGetter
 - **Polish** - Complex inflection with NounGenderInflector
+- **Czech** - Slavic inflection similar to Slovak
+- **Turkish** - PowerAwareTripletTransformer for omitting prefix
+- **Spanish** - Complex patterns with PowerAwareExponentInflector
+- **Ukrainian/Russian** - Gender-aware Slavic languages
+- **Estonian** - Finno-Ugric compound words
+- **Hungarian** - Conditional separator based on number range
+- **Italian** - Vowel elision and conditional spacing
+
+## Architecture Enhancements
+
+### PowerAwareExponentInflector Interface ✅
+Created to solve Spanish long scale numbering issue (commit 7ecfacd).
+
+**Problem:** Spanish uses "mil millones" for 1,000,000,000 when standalone, but just "mil" when part of larger numbers.
+
+**Solution:** Extended `ExponentInflector` with context-aware variant:
+- `inflectExponentWithContext()` provides `maxPower` and `nonZeroTripletCount`
+- `GenericNumberTransformer` auto-detects and uses enhanced interface
+- Backward compatible - existing implementations unaffected
+- Enables languages to make context-aware exponent decisions
+
+**Result:** Spanish now correctly handles all long scale patterns (91/91 tests passing).
 
 ## Known Issues
 
-### Bulgarian Conjunction Problem
+### Bulgarian Conjunction Problem (Still Pending)
 Bulgarian requires "и" (and) between exponents and following triplets:
 - `1001` should be "хиляда **и** едно" not "хиляда едно"
 
@@ -108,6 +145,8 @@ The current architecture doesn't support this because:
 1. Extend `PowerAwareTripletTransformer` to receive more context
 2. Create custom `NumberTransformer` for Bulgarian
 3. Add callback/hook system to `GenericNumberTransformer`
+
+**Note:** PowerAwareExponentInflector solved a similar context issue for Spanish, but Bulgarian needs triplet-level context.
 
 ## Testing
 
