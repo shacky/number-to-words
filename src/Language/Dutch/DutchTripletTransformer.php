@@ -14,7 +14,7 @@ class DutchTripletTransformer implements PowerAwareTripletTransformer
         $this->dictionary = $dictionary;
     }
 
-    public function transformToWords(int $number, int $power, array $allTriplets = []): ?string
+    public function transformToWords(int $number, int $power, array $allTriplets): ?string
     {
         // Special case: omit "één" before "duizend" (1000)
         if ($number === 1 && $power === 1) {

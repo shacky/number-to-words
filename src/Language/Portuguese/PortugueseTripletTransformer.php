@@ -13,7 +13,7 @@ class PortugueseTripletTransformer implements PowerAwareTripletTransformer
         $this->dictionary = $dictionary;
     }
 
-    public function transformToWords(int $number, int $power, array $allTriplets = []): ?string
+    public function transformToWords(int $number, int $power, array $allTriplets): ?string
     {
         // Special case: omit "um" before "mil" (1000)
         // and before "mil milhões" (power 3 = 1,000,000,000)
