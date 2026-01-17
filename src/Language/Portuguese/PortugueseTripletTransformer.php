@@ -2,14 +2,11 @@
 
 namespace NumberToWords\Language\Portuguese;
 
-use NumberToWords\Language\PowerAwareTripletTransformer;
+use NumberToWords\Language\TripletContextAwareTripletTransformer;
 
-class PortugueseTripletTransformer implements PowerAwareTripletTransformer
+class PortugueseTripletTransformer implements TripletContextAwareTripletTransformer
 {
     private PortugueseDictionary $dictionary;
-    private ?int $previousPower = null;
-    private ?int $previousNumber = null;
-    private bool $isFirstTriplet = true;
 
     public function __construct(PortugueseDictionary $dictionary)
     {
@@ -18,12 +15,15 @@ class PortugueseTripletTransformer implements PowerAwareTripletTransformer
 
     public function transformToWords(int $number, int $power): ?string
     {
+        // Backward compatibility - call the context-aware version with empty context
+        return $this->transformToWordsWithContext($number, $power, []);
+    }
+
+    public function transformToWordsWithContext(int $number, int $power, array $allTriplets): ?string
+    {
         // Special case: omit "um" before "mil" (1000)
         // and before "mil milhões" (power 3 = 1,000,000,000)
         if ($number === 1 && ($power === 1 || $power === 3)) {
-            $this->previousPower = $power;
-            $this->previousNumber = $number;
-            $this->isFirstTriplet = false;
             return null;
         }
 
@@ -32,20 +32,39 @@ class PortugueseTripletTransformer implements PowerAwareTripletTransformer
         $hundreds = (int) ($number / 100) % 10;
         $words = [];
 
-        // Add " e " before this triplet if:
-        // 1. This is not the first triplet (there's a higher power)
+        // Check if we should add " e " before this triplet
+        // This happens when:
+        // 1. There are higher powers (we're not the first triplet)
         // 2. This triplet is < 100 OR is an exact multiple of 100
-        // 3. Either: we're at power 0, OR previous power was > current power + 1 (gap in powers)
-        //    The gap check handles cases like 5,100,000 where power 0 is missing
+        // 3. Either: we're at power 0, OR we're the last non-zero triplet (all lower powers are zero)
         $needsConjunction = false;
-        if (!$this->isFirstTriplet && ($number < 100 || ($number % 100 === 0 && $number > 0))) {
-            // We need "e" if we're the last triplet (power 0) or if there's been a gap
+        
+        // Check if there are higher powers
+        $hasHigherPowers = false;
+        foreach ($allTriplets as $p => $value) {
+            if ($p > $power && $value > 0) {
+                $hasHigherPowers = true;
+                break;
+            }
+        }
+
+        if ($hasHigherPowers && ($number < 100 || ($number % 100 === 0 && $number > 0))) {
             if ($power === 0) {
+                // At power 0, always add " e "
                 $needsConjunction = true;
-            } elseif ($this->previousPower !== null && $this->previousPower > $power + 1) {
-                // There's a gap (e.g., from power 2 to power 1, skipping nothing is fine,
-                // but we'd need to track if this is the last)
-                // Actually, this won't work either...
+            } else {
+                // At higher powers, check if all lower powers are zero (we're the last)
+                $isLastNonZero = true;
+                for ($lowerPower = $power - 1; $lowerPower >= 0; $lowerPower--) {
+                    if (isset($allTriplets[$lowerPower]) && $allTriplets[$lowerPower] > 0) {
+                        $isLastNonZero = false;
+                        break;
+                    }
+                }
+                
+                if ($isLastNonZero) {
+                    $needsConjunction = true;
+                }
             }
         }
 
@@ -73,10 +92,6 @@ class PortugueseTripletTransformer implements PowerAwareTripletTransformer
                 $words[] = $this->dictionary->getCorrespondingUnit($units);
             }
         }
-
-        $this->previousPower = $power;
-        $this->previousNumber = $number;
-        $this->isFirstTriplet = false;
 
         // Join parts with " e " and prepend " e " if needed for conjunction
         $result = implode(' e ', $words);

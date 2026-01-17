@@ -7,6 +7,7 @@ use NumberToWords\Language\ExponentGetter;
 use NumberToWords\Language\ExponentInflector;
 use NumberToWords\Language\PowerAwareExponentInflector;
 use NumberToWords\Language\PowerAwareTripletTransformer;
+use NumberToWords\Language\TripletContextAwareTripletTransformer;
 use NumberToWords\Language\TripletTransformer;
 use NumberToWords\Service\NumberToTripletsConverter;
 
@@ -48,6 +49,13 @@ class GenericNumberTransformer implements NumberTransformer
         $triplets = $this->numberToTripletsConverter->convertToTriplets($number);
         $maxPower = count($triplets) - 1;
         $nonZeroTripletCount = count(array_filter($triplets, fn($t) => $t > 0));
+        
+        // Build an associative array of all triplets indexed by power (for context-aware transformers)
+        $allTripletsWithPowers = [];
+        foreach ($triplets as $i => $triplet) {
+            $power = count($triplets) - $i - 1;
+            $allTripletsWithPowers[$power] = $triplet;
+        }
 
         foreach ($triplets as $i => $triplet) {
             if ($triplet > 0) {
@@ -58,10 +66,19 @@ class GenericNumberTransformer implements NumberTransformer
                 }
 
                 if ($this->powerAwareTripletTransformer !== null) {
-                    $tripletTransformResult = $this->powerAwareTripletTransformer->transformToWords(
-                        $triplet,
-                        $power
-                    );
+                    // Use TripletContextAwareTripletTransformer if available for enhanced context
+                    if ($this->powerAwareTripletTransformer instanceof TripletContextAwareTripletTransformer) {
+                        $tripletTransformResult = $this->powerAwareTripletTransformer->transformToWordsWithContext(
+                            $triplet,
+                            $power,
+                            $allTripletsWithPowers
+                        );
+                    } else {
+                        $tripletTransformResult = $this->powerAwareTripletTransformer->transformToWords(
+                            $triplet,
+                            $power
+                        );
+                    }
 
                     if ($tripletTransformResult !== null) {
                         $words[] = $tripletTransformResult;
