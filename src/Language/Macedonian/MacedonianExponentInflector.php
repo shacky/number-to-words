@@ -38,7 +38,7 @@ class MacedonianExponentInflector implements ExponentInflector
         // Use singular form if:
         // - number is exactly 1
         // - OR number ends in 1 but NOT 11
-        $useSingular = ($number === 1) || ($units === 1 && $tens !== 1 && $number > 1);
+        $useSingular = ($number === 1) || ($units === 1 && $tens !== 1);
         
         $form = $useSingular ? Form::SINGULAR : Form::PLURAL;
         
