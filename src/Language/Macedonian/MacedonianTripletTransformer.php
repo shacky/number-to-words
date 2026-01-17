@@ -90,7 +90,7 @@ class MacedonianTripletTransformer implements PowerAwareTripletTransformer, Gram
 
     private function addConjunctions(array $words, int $hundreds, int $tens, int $units, bool $isLast, bool $hasHigherPowerTriplets): string
     {
-        if (count($words) == 0) {
+        if (count($words) === 0) {
             return '';
         }
 
@@ -116,7 +116,7 @@ class MacedonianTripletTransformer implements PowerAwareTripletTransformer, Gram
         // - AND either: no hundreds (e.g., "илјада и еден" for 1001)
         //            OR only one word (e.g., "илјади и триста" for 565300)
         if ($isLast && !$this->lastAndPlaced && $hasHigherPowerTriplets) {
-            if ($hundreds == 0 || count($words) == 1) {
+            if ($hundreds === 0 || count($words) === 1) {
                 $this->lastAndPlaced = true;
                 $resultStr = MacedonianDictionary::GRAMMATICAL_CONJUNCTION_AND . ' ' . $resultStr;
             }
