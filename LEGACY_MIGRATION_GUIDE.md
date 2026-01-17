@@ -30,6 +30,8 @@ These languages now use `NumberTransformerBuilder` exclusively. Legacy implement
 - **Georgian (Ka)** - 111 tests - PowerAwareTripletTransformer with vigesimal (base-20) system and "და" conjunction
 - **French (Fr)** - 117 tests - PowerAwareTripletTransformer with vigesimal patterns for 60-99 and "et" conjunction
 - **French Belgian (Fr/Be)** - 59 tests - PowerAwareTripletTransformer with "septante"/"nonante" instead of vigesimal 70/90
+- **Portuguese Portugal (Pt/Pt)** - 103 tests - PowerAwareTripletTransformer with context-aware " e " conjunction, "cem"/"cento" handling, long scale (mil milhões)
+- **Portuguese Brazil (Pt/Br)** - 103 tests - PowerAwareTripletTransformer with context-aware " e " conjunction, "cem"/"cento" handling, short scale (bilhão)
 
 ### ⚠️ Partial Migrations (3 languages)
 These have `Language/` components but `NumberTransformer` still uses Legacy:
@@ -37,14 +39,13 @@ These have `Language/` components but `NumberTransformer` still uses Legacy:
 - **Lithuanian** - Only has Dictionary
 - **Romanian** - Only has Dictionary
 
-### ❌ Pending Migrations (5 languages)
+### ❌ Pending Migrations (3 languages)
 Need complete migration (no Language/ folder exists):
 - Indonesian (Id)
 - Malay (Ms)
-- Portuguese Portugal (Pt/Pt), Portuguese Brazil (Pt/Br)
 - Swahili (Sw), Yoruba (Yo)
 
-**Progress:** 28 of 36 languages fully migrated (78%)
+**Progress:** 30 of 36 languages fully migrated (83%)
 
 ## Migration Steps
 
