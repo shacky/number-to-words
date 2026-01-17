@@ -55,7 +55,7 @@ class MacedonianTripletTransformer implements PowerAwareTripletTransformer, Gram
         // Process units
         if ($units > 0 && $tens !== 1) {
             // For 1000 (thousand), omit "една" (one)
-            if ($power == 1 && $units === 1 && $hundreds === 0 && $tens === 0) {
+            if ($power === 1 && $units === 1 && $hundreds === 0 && $tens === 0) {
                 return null;
             }
 
