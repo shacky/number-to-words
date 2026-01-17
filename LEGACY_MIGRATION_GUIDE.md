@@ -5,7 +5,7 @@ This document guides the migration of language implementations from `src/Legacy/
 
 ## Migration Status
 
-### ✅ Completed Migrations (26 languages)
+### ✅ Completed Migrations (27 languages)
 These languages now use `NumberTransformerBuilder` exclusively. Legacy implementations have been removed:
 
 **Originally Migrated:**
@@ -28,13 +28,13 @@ These languages now use `NumberTransformerBuilder` exclusively. Legacy implement
 - **Dutch (Nl)** - 57 tests - PowerAwareTripletTransformer with conjunction logic for thousands
 - **Macedonian (Mk)** - 82 tests - PowerAwareTripletTransformer with complex "и" conjunction rules and gender inflection
 - **Georgian (Ka)** - 111 tests - PowerAwareTripletTransformer with vigesimal (base-20) system and "და" conjunction
+- **French (Fr)** - 117 tests - PowerAwareTripletTransformer with vigesimal patterns for 60-99 and "et" conjunction
 
-### ⚠️ Partial Migrations (4 languages)
+### ⚠️ Partial Migrations (3 languages)
 These have `Language/` components but `NumberTransformer` still uses Legacy:
 - **Bulgarian** - Has all components but needs architectural enhancement for conjunction logic
 - **Lithuanian** - Only has Dictionary
 - **Romanian** - Only has Dictionary
-- **French** - Only has BelgianDictionary
 
 ### ❌ Pending Migrations (6 languages)
 Need complete migration (no Language/ folder exists):
@@ -44,7 +44,7 @@ Need complete migration (no Language/ folder exists):
 - Swahili (Sw), Yoruba (Yo)
 - French Belgian (Fr/Be)
 
-**Progress:** 26 of 36 languages fully migrated (72%)
+**Progress:** 27 of 36 languages fully migrated (75%)
 
 ## Migration Steps
 
