@@ -60,7 +60,8 @@ class DutchTripletTransformer implements PowerAwareTripletTransformer
             // Units come before tens in Dutch (except for teens)
             if ($units > 0 && $tens > 0) {
                 // e.g., "éénentwintig" (21), "tweeenzestig" (62)
-                $words[] = $this->dictionary->getCorrespondingUnit($units) . 'en' . $this->dictionary->getCorrespondingTen($tens);
+                $words[] = $this->dictionary->getCorrespondingUnit($units) . 'en'
+                    . $this->dictionary->getCorrespondingTen($tens);
             } elseif ($tens > 0) {
                 // Just tens: 20, 30, 40, etc.
                 $words[] = $this->dictionary->getCorrespondingTen($tens);
@@ -77,4 +78,3 @@ class DutchTripletTransformer implements PowerAwareTripletTransformer
         return implode('', $words);
     }
 }
-
