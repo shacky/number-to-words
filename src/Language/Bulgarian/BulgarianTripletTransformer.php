@@ -18,7 +18,7 @@ class BulgarianTripletTransformer implements PowerAwareTripletTransformer, Gramm
         $this->dictionary = $dictionary;
     }
 
-    public function transformToWords(int $number, int $power): ?string
+    public function transformToWords(int $number, int $power, array $allTriplets = []): ?string
     {
         $units = $number % 10;
         $tens = (int) ($number / 10) % 10;

@@ -7,7 +7,6 @@ use NumberToWords\Language\ExponentGetter;
 use NumberToWords\Language\ExponentInflector;
 use NumberToWords\Language\PowerAwareExponentInflector;
 use NumberToWords\Language\PowerAwareTripletTransformer;
-use NumberToWords\Language\TripletContextAwareTripletTransformer;
 use NumberToWords\Language\TripletTransformer;
 use NumberToWords\Service\NumberToTripletsConverter;
 
@@ -66,19 +65,12 @@ class GenericNumberTransformer implements NumberTransformer
                 }
 
                 if ($this->powerAwareTripletTransformer !== null) {
-                    // Use TripletContextAwareTripletTransformer if available for enhanced context
-                    if ($this->powerAwareTripletTransformer instanceof TripletContextAwareTripletTransformer) {
-                        $tripletTransformResult = $this->powerAwareTripletTransformer->transformToWordsWithContext(
-                            $triplet,
-                            $power,
-                            $allTripletsWithPowers
-                        );
-                    } else {
-                        $tripletTransformResult = $this->powerAwareTripletTransformer->transformToWords(
-                            $triplet,
-                            $power
-                        );
-                    }
+                    // Pass allTriplets context to PowerAwareTripletTransformer
+                    $tripletTransformResult = $this->powerAwareTripletTransformer->transformToWords(
+                        $triplet,
+                        $power,
+                        $allTripletsWithPowers
+                    );
 
                     if ($tripletTransformResult !== null) {
                         $words[] = $tripletTransformResult;

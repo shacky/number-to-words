@@ -2,9 +2,9 @@
 
 namespace NumberToWords\Language\Portuguese;
 
-use NumberToWords\Language\TripletContextAwareTripletTransformer;
+use NumberToWords\Language\PowerAwareTripletTransformer;
 
-class PortugueseTripletTransformer implements TripletContextAwareTripletTransformer
+class PortugueseTripletTransformer implements PowerAwareTripletTransformer
 {
     private PortugueseDictionary $dictionary;
 
@@ -13,13 +13,7 @@ class PortugueseTripletTransformer implements TripletContextAwareTripletTransfor
         $this->dictionary = $dictionary;
     }
 
-    public function transformToWords(int $number, int $power): ?string
-    {
-        // Backward compatibility - call the context-aware version with empty context
-        return $this->transformToWordsWithContext($number, $power, []);
-    }
-
-    public function transformToWordsWithContext(int $number, int $power, array $allTriplets): ?string
+    public function transformToWords(int $number, int $power, array $allTriplets = []): ?string
     {
         // Special case: omit "um" before "mil" (1000)
         // and before "mil milhões" (power 3 = 1,000,000,000)
@@ -52,7 +46,7 @@ class PortugueseTripletTransformer implements TripletContextAwareTripletTransfor
             if ($power === 0) {
                 // At power 0, always add " e "
                 $needsConjunction = true;
-            } else {
+            } elseif (!empty($allTriplets)) {
                 // At higher powers, check if all lower powers are zero (we're the last)
                 $isLastNonZero = true;
                 for ($lowerPower = $power - 1; $lowerPower >= 0; $lowerPower--) {
