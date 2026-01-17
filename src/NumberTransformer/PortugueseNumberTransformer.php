@@ -2,14 +2,27 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Language\Portuguese\PortugueseDictionary;
+use NumberToWords\Language\Portuguese\PortugueseExponentInflector;
+use NumberToWords\Language\Portuguese\PortugueseTripletTransformer;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class PortugueseNumberTransformer implements NumberTransformer
 {
     public function toWords(int $number): string
     {
-        $converter = new Words();
+        $dictionary = new PortugueseDictionary();
+        $numberToTripletsConverter = new NumberToTripletsConverter();
+        $tripletTransformer = new PortugueseTripletTransformer($dictionary);
+        $exponentInflector = new PortugueseExponentInflector();
 
-        return $converter->transformToWords($number, 'pt_PT');
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy(' ')
+            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->inflectExponentByNumbers($exponentInflector)
+            ->build();
+
+        return $numberTransformer->toWords($number);
     }
 }
