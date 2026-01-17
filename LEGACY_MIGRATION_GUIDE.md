@@ -5,7 +5,7 @@ This document guides the migration of language implementations from `src/Legacy/
 
 ## Migration Status
 
-### ✅ Completed Migrations (23 languages)
+### ✅ Completed Migrations (24 languages)
 These languages now use `NumberTransformerBuilder` exclusively. Legacy implementations have been removed:
 
 **Originally Migrated:**
@@ -25,6 +25,7 @@ These languages now use `NumberTransformerBuilder` exclusively. Legacy implement
 - **Estonian (Et)** - 47 tests - Compound words (unit+"sada", unit+"kümmend")
 - **Hungarian (Hu)** - 96 tests - Compound words with conditional separator
 - **Italian (It)** - Vowel elision, conditional spacing, mille/mila inflection
+- **Dutch (Nl)** - 57 tests - PowerAwareTripletTransformer with conjunction logic for thousands
 
 ### ⚠️ Partial Migrations (4 languages)
 These have `Language/` components but `NumberTransformer` still uses Legacy:
@@ -33,15 +34,15 @@ These have `Language/` components but `NumberTransformer` still uses Legacy:
 - **Romanian** - Only has Dictionary
 - **French** - Only has BelgianDictionary
 
-### ❌ Pending Migrations (9 languages)
+### ❌ Pending Migrations (8 languages)
 Need complete migration (no Language/ folder exists):
 - Indonesian (Id), Georgian (Ka), Macedonian (Mk)
-- Malay (Ms), Dutch (Nl)
+- Malay (Ms)
 - Portuguese Portugal (Pt/Pt), Portuguese Brazil (Pt/Br)
 - Swahili (Sw), Yoruba (Yo)
 - French Belgian (Fr/Be)
 
-**Progress:** 23 of 36 languages fully migrated (64%)
+**Progress:** 24 of 36 languages fully migrated (67%)
 
 ## Migration Steps
 
