@@ -2,14 +2,27 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Language\Dutch\DutchDictionary;
+use NumberToWords\Language\Dutch\DutchExponentInflector;
+use NumberToWords\Language\Dutch\DutchTripletTransformer;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class DutchNumberTransformer implements NumberTransformer
 {
     public function toWords(int $number): string
     {
-        $converter = new Words();
+        $dictionary = new DutchDictionary();
+        $numberToTripletsConverter = new NumberToTripletsConverter();
+        $tripletTransformer = new DutchTripletTransformer($dictionary);
+        $exponentInflector = new DutchExponentInflector();
 
-        return $converter->transformToWords($number, 'nl');
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy('')
+            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->inflectExponentByNumbers($exponentInflector)
+            ->build();
+
+        return $numberTransformer->toWords($number);
     }
 }
