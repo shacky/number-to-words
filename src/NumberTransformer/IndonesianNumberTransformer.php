@@ -2,14 +2,27 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Language\Indonesian\IndonesianDictionary;
+use NumberToWords\Language\Indonesian\IndonesianExponentInflector;
+use NumberToWords\Language\Indonesian\IndonesianTripletTransformer;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class IndonesianNumberTransformer implements NumberTransformer
 {
     public function toWords(int $number): string
     {
-        $converter = new Words();
+        $dictionary = new IndonesianDictionary();
+        $numberToTripletsConverter = new NumberToTripletsConverter();
+        $tripletTransformer = new IndonesianTripletTransformer($dictionary);
+        $exponentInflector = new IndonesianExponentInflector();
 
-        return $converter->transformToWords($number, 'id');
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy(' ')
+            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->inflectExponentByNumbers($exponentInflector)
+            ->build();
+
+        return $numberTransformer->toWords($number);
     }
 }
