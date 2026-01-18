@@ -12,11 +12,11 @@ class RomanianCurrencyTransformerTest extends CurrencyTransformerTest
     public function providerItConvertsMoneyAmountToWords(): array
     {
         return [
-            [100, 'ROL', 'un leu'],
-            [200, 'ROL', 'doi lei'],
-            [140, 'ROL', 'un leu și patruzeci de bani'],
-            [145, 'ROL', 'un leu și patruzeci și cinci de bani'],
-            [200000, 'ROL', 'două mii de lei'],
+            [100, 'RON', 'un leu'],
+            [200, 'RON', 'doi lei'],
+            [140, 'RON', 'un leu și patruzeci de bani'],
+            [145, 'RON', 'un leu și patruzeci și cinci de bani'],
+            [200000, 'RON', 'două mii de lei'],
         ];
     }
 }

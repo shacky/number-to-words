@@ -99,7 +99,7 @@ class SpanishDictionary implements Dictionary
         'NOK' => [['norwegian krone', 'norwegian krones'], ['oere', 'oeres']],
         'PAB' => [['balboa', 'balboas'], ['centavo', 'centavos']],
         'PLN' => [['zloty', 'zlotys'], ['grosz']],
-        'ROL' => [['romanian leu'], ['bani']],
+        'RON' => [['romanian leu'], ['bani']],
         'RUB' => [['rublo ruso', 'rublos rusos'], ['kopek']],
         'SEK' => [['Swedish krona'], ['oere']],
         'SIT' => [['tolar'], ['stotinia']],

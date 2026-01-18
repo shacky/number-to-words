@@ -99,7 +99,7 @@ class MalayDictionary implements Dictionary
         'NOK' => [['krone Norway'], ['øre']],
         'PHP' => [['peso'], ['centavo']],
         'PLN' => [['zloty'], ['grosz']],
-        'ROL' => [['leu Romania'], ['bani']],
+        'RON' => [['leu Romania'], ['bani']],
         'RUB' => [['rubel Rusia'], ['kopek']],
         'SAR' => [['riyal Saudi'], ['halalah']],
         'SEK' => [['krona Sweden'], ['öre']],

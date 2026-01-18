@@ -101,7 +101,7 @@ class YorubaDictionary implements Dictionary
         'NOK' => [['Krone Norway', 'Krone Norway'], ['ore', 'ore']],
         'PHP' => [['Peso Filipaini', 'Peso Filipaini'], ['sentavo', 'sentavo']],
         'PLN' => [['Zloty Polandi', 'Zloty Polandi'], ['grosz', 'grosz']],
-        'ROL' => [['Leu Romania', 'Leu Romania'], ['bani', 'bani']],
+        'RON' => [['Leu Romania', 'Leu Romania'], ['bani', 'bani']],
         'RUB' => [['Rubu Rọ́ṣíà', 'Rubu Rọ́ṣíà'], ['kopek', 'kopek']],
         'SAR' => [['Riyal Saudi', 'Riyal Saudi'], ['halala', 'halala']],
         'SEK' => [['Krona Suwidi', 'Krona Suwidi'], ['ore', 'ore']],

@@ -85,7 +85,7 @@ class DanishDictionary implements Dictionary
         'NOK' => [['norsk krone', 'norske kroner'], ['øre']],
         'PHP' => [['filippinsk peso'], ['centavo']],
         'PLN' => [['zloty'], ['grosz']],
-        'ROL' => [['rumænsk leu'], ['bani']],
+        'RON' => [['rumænsk leu'], ['bani']],
         'RUB' => [['russisk rubel'], ['kopeke']],
         'SAR' => [['saudiarabisk riyal'], ['halala']],
         'SEK' => [['svensk krone', 'svenske kroner'], ['öre']],

@@ -29,10 +29,10 @@ class BulgarianDictionary implements Dictionary
         self::ENUMERATION_BY_VALUE => [
             0 => 'нула',
             1 => [
-                    Gender::GENDER_MASCULINE => 'един',
-                    Gender::GENDER_FEMININE => 'една',
-                    Gender::GENDER_NEUTER => 'едно',
-                    Gender::GENDER_ABSTRACT => 'едно',
+                Gender::GENDER_MASCULINE => 'един',
+                Gender::GENDER_FEMININE => 'една',
+                Gender::GENDER_NEUTER => 'едно',
+                Gender::GENDER_ABSTRACT => 'едно',
             ],
             2 => [
                 Gender::GENDER_MASCULINE => 'два',
@@ -83,253 +83,253 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'вигинтилионна',
                 Form::PLURAL => 'вигинтилионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -20 => [
                 Form::SINGULAR => 'новемдекалионна',
                 Form::PLURAL => 'новемдекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -19 => [
                 Form::SINGULAR => 'октодекалионна',
                 Form::PLURAL => 'октодекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -18 => [
                 Form::SINGULAR => 'септдекалионна',
                 Form::PLURAL => 'септдекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -17 => [
                 Form::SINGULAR => 'сексдекалионна',
                 Form::PLURAL => 'сексдекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -16 => [
                 Form::SINGULAR => 'квинтдекалионна',
                 Form::PLURAL => 'квинтдекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -15 => [
                 Form::SINGULAR => 'кватордекалионна',
                 Form::PLURAL => 'кватордекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -14 => [
                 Form::SINGULAR => 'тредекалионна',
                 Form::PLURAL => 'тредекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -13 => [
                 Form::SINGULAR => 'дуодекалионна',
                 Form::PLURAL => 'дуодекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -12 => [
                 Form::SINGULAR => 'ундекалионна',
                 Form::PLURAL => 'ундекалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -11 => [
                 Form::SINGULAR => 'декалионна',
                 Form::PLURAL => 'декалионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -10 => [
                 Form::SINGULAR => 'ноналионна',
                 Form::PLURAL => 'ноналионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -9 => [
                 Form::SINGULAR => 'октилионна',
                 Form::PLURAL => 'октилионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -8 => [
                 Form::SINGULAR => 'септилионна',
                 Form::PLURAL => 'септилионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -7 => [
                 Form::SINGULAR => 'секстилионна',
                 Form::PLURAL => 'секстилионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -6 => [
                 Form::SINGULAR => 'квинтилионна',
                 Form::PLURAL => 'квинтилионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -5 => [
                 Form::SINGULAR => 'квадрилионна',
                 Form::PLURAL => 'квадрилионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -4 => [
                 Form::SINGULAR => 'трилионна',
                 Form::PLURAL => 'трилионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -3 => [
                 Form::SINGULAR => 'милиардна',
                 Form::PLURAL => 'милиардни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -2 => [
                 Form::SINGULAR => 'милионна',
                 Form::PLURAL => 'милионни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             -1 => [
                 Form::SINGULAR => 'хилядна',
                 Form::PLURAL => 'хилядни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             1 => [
                 Form::SINGULAR => 'хиляда',
                 Form::PLURAL => 'хиляди',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             2 => [
                 Form::SINGULAR => 'милион',
                 Form::PLURAL => 'милиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             3 => [
                 Form::SINGULAR => 'милиард',
                 Form::PLURAL => 'милиарда',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             4 => [
                 Form::SINGULAR => 'трилион',
                 Form::PLURAL => 'трилиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             5 => [
                 Form::SINGULAR => 'квадрилион',
                 Form::PLURAL => 'квадрилиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             6 => [
                 Form::SINGULAR => 'квинтилион',
                 Form::PLURAL => 'квинтилиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             7 => [
                 Form::SINGULAR => 'секстилион',
                 Form::PLURAL => 'секстилиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             8 => [
                 Form::SINGULAR => 'септилион',
                 Form::PLURAL => 'септилиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             9 => [
                 Form::SINGULAR => 'октилион',
                 Form::PLURAL => 'октилиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             10 => [
                 Form::SINGULAR => 'ноналион',
                 Form::PLURAL => 'ноналиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             11 => [
                 Form::SINGULAR => 'декалион',
                 Form::PLURAL => 'декалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             12 => [
                 Form::SINGULAR => 'ундекалион',
                 Form::PLURAL => 'ундекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             13 => [
                 Form::SINGULAR => 'дуодекалион',
                 Form::PLURAL => 'дуодекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             14 => [
                 Form::SINGULAR => 'тредекалион',
                 Form::PLURAL => 'тредекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             15 => [
                 Form::SINGULAR => 'кватордекалион',
                 Form::PLURAL => 'кватордекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             16 => [
                 Form::SINGULAR => 'квинтдекалион',
                 Form::PLURAL => 'квинтдекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             17 => [
                 Form::SINGULAR => 'сексдекалион',
                 Form::PLURAL => 'сексдекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             18 => [
                 Form::SINGULAR => 'септдекалион',
                 Form::PLURAL => 'септдекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             19 => [
                 Form::SINGULAR => 'октодекалион',
                 Form::PLURAL => 'октодекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             20 => [
                 Form::SINGULAR => 'новемдекалион',
                 Form::PLURAL => 'новемдекалиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             21 => [
                 Form::SINGULAR => 'вигинтилион',
                 Form::PLURAL => 'вигинтилиона',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
     ];
@@ -340,13 +340,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'лек',
                 Form::PLURAL => 'лека',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'киндарка',
                 Form::PLURAL => 'киндарки',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
         ],
         'AED' => [
@@ -354,13 +354,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'дирхам на ОАЕ',
                 Form::PLURAL => 'дирхама на ОАЕ',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'филс',
                 Form::PLURAL => 'филса',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'AUD' => [
@@ -368,13 +368,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'австралийски долар',
                 Form::PLURAL => 'австралийски долара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'цент',
                 Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'BAM' => [
@@ -382,13 +382,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'конвертируема марка',
                 Form::PLURAL => 'конвертируеми марки',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'фениг',
                 Form::PLURAL => 'фенига',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'BGN' => [
@@ -396,13 +396,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'лев',
                 Form::PLURAL => 'лева',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'стотинка',
                 Form::PLURAL => 'стотинки',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
         ],
         'BRL' => [
@@ -410,13 +410,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'реал',
                 Form::PLURAL => 'реала',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'сентаво',
                 Form::PLURAL => 'сентави',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_NEUTER,
+                Gender::GENDER_NEUTER,
             ],
         ],
         'BYR' => [
@@ -424,13 +424,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'беларуска рубла',
                 Form::PLURAL => 'беларуски рубли',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'копейка',
                 Form::PLURAL => 'копейки',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
         ],
         'CAD' => [
@@ -438,13 +438,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'канадски долар',
                 Form::PLURAL => 'канадски долари',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'цент',
                 Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'CHF' => [
@@ -452,13 +452,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'швейцарски франк',
                 Form::PLURAL => 'швейцарски франка',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'сантим',
                 Form::PLURAL => 'сантима',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'CYP' => [
@@ -466,13 +466,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'кипърска лира',
                 Form::PLURAL => 'кипърски лири',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'цент',
                 Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'CZK' => [
@@ -480,13 +480,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'чешка крона',
                 Form::PLURAL => 'чешки крони',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'халер',
                 Form::PLURAL => 'халера',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'DKK' => [
@@ -494,13 +494,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'датска крона',
                 Form::PLURAL => 'датски крони',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'йоре',
                 Form::PLURAL => 'йоре',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_NEUTER,
+                Gender::GENDER_NEUTER,
             ],
         ],
         'DZD' => [
@@ -508,13 +508,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'алжирски динар',
                 Form::PLURAL => 'алжирски динара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'цент',
                 Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'EEK' => [
@@ -522,13 +522,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'естонска крона',
                 Form::PLURAL => 'естонски крони',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'цент',
                 Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'EGP' => [
@@ -536,13 +536,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'египетска лира',
                 Form::PLURAL => 'египетски лири',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'пиастър',
                 Form::PLURAL => 'пиастъра',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'EUR' => [
@@ -550,13 +550,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'евро',
                 Form::PLURAL => 'евро',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_NEUTER,
+                Gender::GENDER_NEUTER,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'цент',
                 Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'GBP' => [
@@ -564,13 +564,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'британска лира',
                 Form::PLURAL => 'британски лири',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'пенс',
                 Form::PLURAL => 'пенса',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'HKD' => [
@@ -578,13 +578,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'хонгконгски долар',
                 Form::PLURAL => 'хонгконгски долара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'цент',
                 Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'HRK' => [
@@ -592,13 +592,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'хърватска куна',
                 Form::PLURAL => 'хърватски куни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'лип',
                 Form::PLURAL => 'липа',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'HUF' => [
@@ -606,13 +606,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'форинт',
                 Form::PLURAL => 'форинта',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'филер',
                 Form::PLURAL => 'филера',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'ILS' => [
@@ -620,13 +620,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'шекел',
                 Form::PLURAL => 'шекела',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'агорот',
                 Form::PLURAL => 'агороти',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'ISK' => [
@@ -634,13 +634,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'исландска крона',
                 Form::PLURAL => 'исландски крони',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'ейре',
                 Form::PLURAL => 'ейре',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_NEUTER,
+                Gender::GENDER_NEUTER,
             ],
         ],
         'JPY' => [
@@ -648,13 +648,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'йена',
                 Form::PLURAL => 'йени',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'сен',
                 Form::PLURAL => 'сена',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'LTL' => [
@@ -662,13 +662,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'литас',
                 Form::PLURAL => 'литаса',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'цент',
                 Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'LVL' => [
@@ -676,13 +676,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'лат',
                 Form::PLURAL => 'лата',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'сантим',
                 Form::PLURAL => 'сантима',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'LYD' => [
@@ -690,13 +690,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'либийски динар',
                 Form::PLURAL => 'либийски динара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'цент',
                 Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'MAD' => [
@@ -704,13 +704,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'марокански дирхам',
                 Form::PLURAL => 'марокански дирхама',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'цент',
                 Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'MKD' => [
@@ -718,13 +718,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'македонски денар',
                 Form::PLURAL => 'македонски денара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'ден',
                 Form::PLURAL => 'дени',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'MRO' => [
@@ -732,13 +732,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'угия',
                 Form::PLURAL => 'угии',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'хумс',
                 Form::PLURAL => 'хумса',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'MTL' => [
@@ -746,13 +746,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'малтийска лира',
                 Form::PLURAL => 'малтийски лири',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'сантим',
                 Form::PLURAL => 'сантима',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'NGN' => [
@@ -760,13 +760,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'найра',
                 Form::PLURAL => 'найра',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'кобо',
                 Form::PLURAL => 'кобо',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_NEUTER,
+                Gender::GENDER_NEUTER,
             ],
         ],
         'NOK' => [
@@ -774,13 +774,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'норвежка крона',
                 Form::PLURAL => 'норвежки крони',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'йоре',
                 Form::PLURAL => 'йоре',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_NEUTER,
+                Gender::GENDER_NEUTER,
             ],
         ],
         'PHP' => [
@@ -788,13 +788,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'филипинско песо',
                 Form::PLURAL => 'филипински песа',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_NEUTER,
+                Gender::GENDER_NEUTER,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'сентаво',
                 Form::PLURAL => 'сентави',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_NEUTER,
+                Gender::GENDER_NEUTER,
             ],
         ],
         'PLN' => [
@@ -802,27 +802,27 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'злота',
                 Form::PLURAL => 'злоти',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'грош',
                 Form::PLURAL => 'гроша',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
-        'ROL' => [
+        'RON' => [
             self::CURRENCY_WHOLE => [
                 Form::SINGULAR => 'лея',
                 Form::PLURAL => 'леи',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'бан',
                 Form::PLURAL => 'бани',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'RUB' => [
@@ -830,13 +830,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'рубла',
                 Form::PLURAL => 'рубли',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'копейка',
                 Form::PLURAL => 'копейки',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
         ],
         'SAR' => [
@@ -844,13 +844,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'риал',
                 Form::PLURAL => 'риала',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'халал',
                 Form::PLURAL => 'халала',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'SEK' => [
@@ -858,13 +858,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'шведска крона',
                 Form::PLURAL => 'шведски крони',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'йоре',
                 Form::PLURAL => 'йоре',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_NEUTER,
+                Gender::GENDER_NEUTER,
             ],
         ],
         'SIT' => [
@@ -872,13 +872,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'толар',
                 Form::PLURAL => 'толара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'стотина',
                 Form::PLURAL => 'стотини',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
         ],
         'SKK' => [
@@ -886,13 +886,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'словашка крона',
                 Form::PLURAL => 'словашки крони',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'халиер',
                 Form::PLURAL => 'халиера',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'TMT' => [
@@ -900,13 +900,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'туркменски манат',
                 Form::PLURAL => 'туркменски маната',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'тенге',
                 Form::PLURAL => 'тенги',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_NEUTER,
+                Gender::GENDER_NEUTER,
             ],
         ],
         'TND' => [
@@ -914,13 +914,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'унизийски динар',
                 Form::PLURAL => 'тунизийски динара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'милим',
                 Form::PLURAL => 'милима',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'TRL' => [
@@ -928,13 +928,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'турска лира',
                 Form::PLURAL => 'турски лири',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'куруш',
                 Form::PLURAL => 'куруша',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'TRY' => [
@@ -942,13 +942,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'турска лира',
                 Form::PLURAL => 'турски лири',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'куруш',
                 Form::PLURAL => 'куруша',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'UAH' => [
@@ -956,13 +956,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'гривна',
                 Form::PLURAL => 'гривни',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'копийка',
                 Form::PLURAL => 'копийки',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'USD' => [
@@ -970,13 +970,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'долар',
                 Form::PLURAL => 'долара',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'цент',
                 Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'XAF' => [
@@ -984,13 +984,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'CFA франк',
                 Form::PLURAL => 'CFA франка',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'цент',
                 Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'XOF' => [
@@ -998,13 +998,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'CFA франк',
                 Form::PLURAL => 'CFA франка',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'цент',
                 Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'XPF' => [
@@ -1012,13 +1012,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'CFP франк',
                 Form::PLURAL => 'CFP франка',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'сантим',
                 Form::PLURAL => 'сантима',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'YUM' => [
@@ -1026,13 +1026,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'югославски динар',
                 Form::PLURAL => 'югославски динари',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'пара',
                 Form::PLURAL => 'пари',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_FEMININE,
+                Gender::GENDER_FEMININE,
             ],
         ],
         'ZAR' => [
@@ -1040,13 +1040,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'ранд',
                 Form::PLURAL => 'ранда',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'цент',
                 Form::PLURAL => 'цента',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
         'UZS' => [
@@ -1054,13 +1054,13 @@ class BulgarianDictionary implements Dictionary
                 Form::SINGULAR => 'сом',
                 Form::PLURAL => 'сома',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
             self::CURRENCY_FRACTION => [
                 Form::SINGULAR => 'тийн',
                 Form::PLURAL => 'тийна',
                 GrammaticalGenderAwareInterface::GRAMMATICAL_GENDER =>
-                    Gender::GENDER_MASCULINE,
+                Gender::GENDER_MASCULINE,
             ],
         ],
     ];

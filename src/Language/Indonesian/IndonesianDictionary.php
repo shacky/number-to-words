@@ -98,7 +98,7 @@ class IndonesianDictionary implements Dictionary
         'NOK' => [['krone Norwegia'], ['øre']],
         'PHP' => [['peso'], ['senavo']],
         'PLN' => [['zloty'], ['grosz']],
-        'ROL' => [['leu Rumania'], ['bani']],
+        'RON' => [['leu Rumania'], ['bani']],
         'RUB' => [['rubel Rusia'], ['kopeck']],
         'SAR' => [['riyal Saudi'], ['halalah']],
         'SEK' => [['krona Swedia'], ['öre']],

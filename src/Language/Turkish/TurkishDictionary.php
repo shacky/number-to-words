@@ -64,7 +64,7 @@ class TurkishDictionary implements Dictionary
         'MTL' => [['Malta lirası'], ['centym']],
         'NOK' => [['Norveç kronu'], ['oere']],
         'PLN' => [['Polonya zlotisi'], ['grosz']],
-        'ROL' => [['Roman leyi'], ['bani']],
+        'RON' => [['Roman leyi'], ['bani']],
         'RUB' => [['Rus rublesi'], ['kopiejka']],
         'SEK' => [['İsveç kronu'], ['oere']],
         'SIT' => [['Slovenya toları'], ['stotinia']],

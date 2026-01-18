@@ -92,7 +92,7 @@ class SwahiliDictionary implements Dictionary
         'NOK' => [['Krone ya Norway', 'Krone za Norway'], ['ore', 'ore']],
         'PHP' => [['Peso ya Ufilipino', 'Peso za Ufilipino'], ['sentavo', 'sentavo']],
         'PLN' => [['Zloty ya Poland', 'Zloty za Poland'], ['grosz', 'grosz']],
-        'ROL' => [['Leu ya Romania', 'Leu za Romania'], ['bani', 'bani']],
+        'RON' => [['Leu ya Romania', 'Leu za Romania'], ['bani', 'bani']],
         'RUB' => [['Rubel ya Urusi', 'Rubel za Urusi'], ['kopek', 'kopek']],
         'RWF' => [['Faranga ya Rwanda', 'Faranga za Rwanda'], ['senti', 'senti']],
         'SAR' => [['Riyal ya Saudia', 'Riyal za Saudia'], ['halala', 'halala']],

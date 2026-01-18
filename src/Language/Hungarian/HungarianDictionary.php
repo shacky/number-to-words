@@ -50,7 +50,7 @@ class HungarianDictionary implements Dictionary
         'MTL' => [['máltai líra'], ['cent']],
         'NOK' => [['norvég korona'], ['őre']],
         'PLN' => [['zloty'], ['grosz']],
-        'ROL' => [['lej'], ['bani']],
+        'RON' => [['lej'], ['bani']],
         'RUB' => [['orosz rubel'], ['kopejka']],
         'SEK' => [['svéd korona'], ['őre']],
         'SIT' => [['tolár'], ['sztotin']],
