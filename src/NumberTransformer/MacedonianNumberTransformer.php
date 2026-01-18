@@ -2,14 +2,30 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Grammar\Gender;
+use NumberToWords\Language\Macedonian\MacedonianDictionary;
+use NumberToWords\Language\Macedonian\MacedonianExponentInflector;
+use NumberToWords\Language\Macedonian\MacedonianTripletTransformer;
+use NumberToWords\NumberTransformer\NumberTransformerBuilder;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class MacedonianNumberTransformer implements NumberTransformer
 {
     public function toWords(int $number): string
     {
-        $converter = new Words();
+        $dictionary = new MacedonianDictionary();
+        $numberToTripletsConverter = new NumberToTripletsConverter();
+        $tripletTransformer = (new MacedonianTripletTransformer($dictionary))
+            ->setGrammaticalGender(Gender::GENDER_MASCULINE);
+        $exponentInflector = new MacedonianExponentInflector($dictionary);
 
-        return $converter->transformToWords($number, 'mk');
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy(' ')
+            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->inflectExponentByNumbers($exponentInflector)
+            ->build();
+
+        return $numberTransformer->toWords($number);
     }
 }

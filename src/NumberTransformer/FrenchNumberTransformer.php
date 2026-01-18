@@ -2,14 +2,27 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Language\French\FrenchDictionary;
+use NumberToWords\Language\French\FrenchTripletTransformer;
+use NumberToWords\Language\French\FrenchExponentInflector;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class FrenchNumberTransformer implements NumberTransformer
 {
     public function toWords(int $number): string
     {
-        $converter = new Words();
+        $dictionary = new FrenchDictionary();
+        $numberToTripletsConverter = new NumberToTripletsConverter();
+        $tripletTransformer = new FrenchTripletTransformer($dictionary);
+        $exponentInflector = new FrenchExponentInflector();
 
-        return $converter->transformToWords($number, 'fr');
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy(' ')
+            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->inflectExponentByNumbers($exponentInflector)
+            ->build();
+
+        return $numberTransformer->toWords($number);
     }
 }

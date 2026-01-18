@@ -5,7 +5,7 @@ This document guides the migration of language implementations from `src/Legacy/
 
 ## Migration Status
 
-### ✅ Completed Migrations (23 languages)
+### ✅ Completed Migrations (28 languages)
 These languages now use `NumberTransformerBuilder` exclusively. Legacy implementations have been removed:
 
 **Originally Migrated:**
@@ -25,23 +25,27 @@ These languages now use `NumberTransformerBuilder` exclusively. Legacy implement
 - **Estonian (Et)** - 47 tests - Compound words (unit+"sada", unit+"kümmend")
 - **Hungarian (Hu)** - 96 tests - Compound words with conditional separator
 - **Italian (It)** - Vowel elision, conditional spacing, mille/mila inflection
+- **Dutch (Nl)** - 57 tests - PowerAwareTripletTransformer with conjunction logic for thousands
+- **Macedonian (Mk)** - 82 tests - PowerAwareTripletTransformer with complex "и" conjunction rules and gender inflection
+- **Georgian (Ka)** - 111 tests - PowerAwareTripletTransformer with vigesimal (base-20) system and "და" conjunction
+- **French (Fr)** - 117 tests - PowerAwareTripletTransformer with vigesimal patterns for 60-99 and "et" conjunction
+- **French Belgian (Fr/Be)** - 59 tests - PowerAwareTripletTransformer with "septante"/"nonante" instead of vigesimal 70/90
+- **Portuguese Portugal (Pt/Pt)** - 103 tests - PowerAwareTripletTransformer with context-aware " e " conjunction, "cem"/"cento" handling, long scale (mil milhões)
+- **Portuguese Brazil (Pt/Br)** - 103 tests - PowerAwareTripletTransformer with context-aware " e " conjunction, "cem"/"cento" handling, short scale (bilhão)
 
-### ⚠️ Partial Migrations (4 languages)
+### ⚠️ Partial Migrations (3 languages)
 These have `Language/` components but `NumberTransformer` still uses Legacy:
 - **Bulgarian** - Has all components but needs architectural enhancement for conjunction logic
 - **Lithuanian** - Only has Dictionary
 - **Romanian** - Only has Dictionary
-- **French** - Only has BelgianDictionary
 
-### ❌ Pending Migrations (9 languages)
+### ❌ Pending Migrations (3 languages)
 Need complete migration (no Language/ folder exists):
-- Indonesian (Id), Georgian (Ka), Macedonian (Mk)
-- Malay (Ms), Dutch (Nl)
-- Portuguese Portugal (Pt/Pt), Portuguese Brazil (Pt/Br)
+- Indonesian (Id)
+- Malay (Ms)
 - Swahili (Sw), Yoruba (Yo)
-- French Belgian (Fr/Be)
 
-**Progress:** 23 of 36 languages fully migrated (64%)
+**Progress:** 30 of 36 languages fully migrated (83%)
 
 ## Migration Steps
 

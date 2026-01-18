@@ -48,6 +48,13 @@ class GenericNumberTransformer implements NumberTransformer
         $triplets = $this->numberToTripletsConverter->convertToTriplets($number);
         $maxPower = count($triplets) - 1;
         $nonZeroTripletCount = count(array_filter($triplets, fn($t) => $t > 0));
+        
+        // Build an associative array of all triplets indexed by power (for context-aware transformers)
+        $allTripletsWithPowers = [];
+        foreach ($triplets as $i => $triplet) {
+            $power = count($triplets) - $i - 1;
+            $allTripletsWithPowers[$power] = $triplet;
+        }
 
         foreach ($triplets as $i => $triplet) {
             if ($triplet > 0) {
@@ -58,9 +65,11 @@ class GenericNumberTransformer implements NumberTransformer
                 }
 
                 if ($this->powerAwareTripletTransformer !== null) {
+                    // Pass allTriplets context to PowerAwareTripletTransformer
                     $tripletTransformResult = $this->powerAwareTripletTransformer->transformToWords(
                         $triplet,
-                        $power
+                        $power,
+                        $allTripletsWithPowers
                     );
 
                     if ($tripletTransformResult !== null) {

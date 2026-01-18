@@ -2,14 +2,27 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Language\Georgian\GeorgianDictionary;
+use NumberToWords\Language\Georgian\GeorgianExponentInflector;
+use NumberToWords\Language\Georgian\GeorgianTripletTransformer;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class GeorgianNumberTransformer implements NumberTransformer
 {
     public function toWords(int $number): string
     {
-        $converter = new Words();
+        $dictionary = new GeorgianDictionary();
+        $numberToTripletsConverter = new NumberToTripletsConverter();
+        $tripletTransformer = new GeorgianTripletTransformer($dictionary);
+        $exponentInflector = new GeorgianExponentInflector($dictionary);
 
-        return $converter->transformToWords($number, 'ka');
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy(' ')
+            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->inflectExponentByNumbers($exponentInflector)
+            ->build();
+
+        return $numberTransformer->toWords($number);
     }
 }

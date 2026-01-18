@@ -8,7 +8,7 @@ namespace NumberToWords\Language\Serbian;
  */
 class SerbianFemaleTripletTransformer extends SerbianTripletTransformer
 {
-    public function transformToWords(int $number, int $power): string
+    public function transformToWords(int $number, int $power, array $allTriplets): string
     {
         $units = $number % 10;
         $tens = (int) ($number / 10) % 10;
