@@ -2,14 +2,24 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Language\Yoruba\YorubaDictionary;
+use NumberToWords\Language\Yoruba\YorubaTripletTransformer;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class YorubaNumberTransformer implements NumberTransformer
 {
     public function toWords(int $number): string
     {
-        $converter = new Words();
+        $dictionary = new YorubaDictionary();
+        $numberToTripletsConverter = new NumberToTripletsConverter();
+        $tripletTransformer = new YorubaTripletTransformer($dictionary);
 
-        return $converter->transformToWords($number, 'yo');
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy(', ')
+            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->build();
+
+        return $numberTransformer->toWords($number);
     }
 }

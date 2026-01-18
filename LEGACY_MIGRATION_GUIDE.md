@@ -5,7 +5,7 @@ This document guides the migration of language implementations from `src/Legacy/
 
 ## Migration Status
 
-### ✅ Completed Migrations (31 languages)
+### ✅ Completed Migrations (32 languages)
 These languages now use `NumberTransformerBuilder` exclusively. Legacy implementations have been removed:
 
 **Originally Migrated:**
@@ -36,17 +36,17 @@ These languages now use `NumberTransformerBuilder` exclusively. Legacy implement
 - **Indonesian (Id)** - PowerAwareTripletTransformer with seribu special-case handled via exponent inflection
 - **Malay (Ms)** - PowerAwareTripletTransformer with seribu handled in exponent inflector; full currency set
 - **Swahili (Sw)** - PowerAwareTripletTransformer with lakh (10^5) exponent and comma-separated group joining
+- **Yoruba (Yo)** - PowerAwareTripletTransformer with comma-separated grouping and localized currency labels
 
 ### ⚠️ Partial Migrations (2 languages)
 These have `Language/` components but `NumberTransformer` still uses Legacy:
 - **Bulgarian** - Has all components but needs architectural enhancement for conjunction logic
 - **Romanian** - Only has Dictionary
 
-### ❌ Pending Migrations (1 language)
+### ❌ Pending Migrations (0 languages)
 Need complete migration (no Language/ folder exists):
-- Yoruba (Yo)
 
-**Progress:** 31 of 36 languages fully migrated (86%)
+**Progress:** 32 of 36 languages fully migrated (89%)
 
 ## Migration Steps
 
