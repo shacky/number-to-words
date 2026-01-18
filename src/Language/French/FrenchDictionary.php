@@ -49,6 +49,16 @@ class FrenchDictionary implements Dictionary
         9 => 'quatre-vingt',  // 90s use quatre-vingt + teens
     ];
 
+    public static array $currencyNames = [
+        'EUR' => [['euro', 'euros'], ['centime', 'centimes']],
+        'JPY' => [['yen', 'yens'], ['sen', 'sens']],
+        'XPF' => [['franc CFP', 'francs CFP'], ['centime', 'centimes']],
+        'AUD' => [['dollar australien', 'dollars australiens'], ['cent', 'cents']],
+        'CAD' => [['dollar canadien', 'dollars canadiens'], ['cent', 'cents']],
+        'USD' => [['dollar américain', 'dollars américains'], ['cent', 'cents']],
+        'GBP' => [['pound', 'pounds'], ['penny', 'pence']],
+    ];
+
     public function getZero(): string
     {
         return 'zéro';

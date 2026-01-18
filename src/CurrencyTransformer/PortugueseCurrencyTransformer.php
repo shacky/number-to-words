@@ -2,15 +2,72 @@
 
 namespace NumberToWords\CurrencyTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Exception\NumberToWordsException;
+use NumberToWords\Language\Portuguese\PortugueseDictionary;
+use NumberToWords\Language\Portuguese\PortugueseExponentInflector;
+use NumberToWords\Language\Portuguese\PortugueseTripletTransformer;
+use NumberToWords\NumberTransformer\NumberTransformerBuilder;
+use NumberToWords\Service\NumberToTripletsConverter;
 use NumberToWords\TransformerOptions\CurrencyTransformerOptions;
 
 class PortugueseCurrencyTransformer implements CurrencyTransformer
 {
+    use CurrencySubunitSplitter;
+
     public function toWords(int $amount, string $currency, ?CurrencyTransformerOptions $options = null): string
     {
-        $converter = new Words($options);
+        $dictionary = new PortugueseDictionary();
+        $numberToTripletsConverter = new NumberToTripletsConverter();
+        $tripletTransformer = new PortugueseTripletTransformer($dictionary);
+        $exponentInflector = new PortugueseExponentInflector();
 
-        return $converter->transformToCurrency($amount, 'pt_PT', $currency);
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy(' ')
+            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->inflectExponentByNumbers($exponentInflector)
+            ->build();
+
+        [$decimal, $fraction] = $this->splitAmount($amount, $currency);
+
+        if ($fraction === 0) {
+            $fraction = null;
+        }
+
+        $currency = strtoupper($currency);
+
+        if (!array_key_exists($currency, PortugueseDictionary::$currencyNames)) {
+            throw new NumberToWordsException(
+                sprintf('Currency "%s" is not available for "%s" language', $currency, get_class($this))
+            );
+        }
+
+        $currencyNames = PortugueseDictionary::$currencyNames[$currency];
+
+        $return = '';
+
+        if ($decimal !== 0 || null === $fraction) {
+            $decimalWords = trim($numberTransformer->toWords($decimal));
+            $level = ($decimal === 1) ? 0 : 1;
+            $majorName = $currencyNames[0][$level] ?? $currencyNames[0][0];
+
+            $return = $decimalWords . ' ' . $majorName;
+        }
+
+        if (null !== $fraction) {
+            $fractionWords = trim($numberTransformer->toWords($fraction));
+            $fractionLevel = ($fraction === 1) ? 0 : 1;
+            $minorName = $currencyNames[1][$fractionLevel] ?? $currencyNames[1][0];
+
+            $fractionPart = $fractionWords . ' ' . $minorName;
+
+            if ($return !== '') {
+                $return .= ' e ' . $fractionPart;
+            } else {
+                $return = $fractionPart;
+            }
+        }
+
+        return trim($return);
     }
 }

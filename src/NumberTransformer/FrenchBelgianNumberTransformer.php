@@ -2,9 +2,9 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Language\French\BelgianFrenchDictionary;
-use NumberToWords\Language\French\BelgianFrenchTripletTransformer;
-use NumberToWords\Language\French\BelgianFrenchExponentInflector;
+use NumberToWords\Language\BelgianFrench\BelgianFrenchDictionary;
+use NumberToWords\Language\BelgianFrench\BelgianFrenchExponentInflector;
+use NumberToWords\Language\BelgianFrench\BelgianFrenchTripletTransformer;
 use NumberToWords\Service\NumberToTripletsConverter;
 
 class FrenchBelgianNumberTransformer implements NumberTransformer

@@ -1,6 +1,6 @@
 <?php
 
-namespace NumberToWords\Language\French;
+namespace NumberToWords\Language\BelgianFrench;
 
 use NumberToWords\Language\ExponentInflector;
 

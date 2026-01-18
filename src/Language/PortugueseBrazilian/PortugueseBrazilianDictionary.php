@@ -62,6 +62,12 @@ class PortugueseBrazilianDictionary implements Dictionary
         9 => 'novecentos',
     ];
 
+    public static array $currencyNames = [
+        'BRL' => [['real', 'reais'], ['centavo', 'centavos']],
+        'USD' => [['dólar', 'dólares'], ['centavo', 'centavos']],
+        'EUR' => [['euro', 'euros'], ['centavo', 'centavos']],
+    ];
+
     public function getZero(): string
     {
         return 'zero';
