@@ -6,6 +6,7 @@ use NumberToWords\Language\Lithuanian\LithuanianDictionary;
 use NumberToWords\Language\Lithuanian\LithuanianExponentInflector;
 use NumberToWords\Language\Lithuanian\LithuanianNounGenderInflector;
 use NumberToWords\Language\Lithuanian\LithuanianTripletTransformer;
+use NumberToWords\NumberTransformer\NumberTransformerBuilder;
 use NumberToWords\Service\NumberToTripletsConverter;
 
 class LithuanianNumberTransformer implements NumberTransformer
