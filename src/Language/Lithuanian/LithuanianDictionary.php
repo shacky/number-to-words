@@ -55,11 +55,11 @@ class LithuanianDictionary implements Dictionary
     ];
 
     public static array $exponent = [
-        ['', ''],
+        ['', '', ''],
         ['tūkstantis', 'tūkstančių', 'tūkstančiai'],
         ['milijonas', 'milijonų', 'milijonai'],
         ['bilijonas', 'bilijonų', 'bilijonai'],
-        ['trilijonas', 'trilijonų', 'trilijardai'],
+        ['trilijonas', 'trilijonų', 'trilijonai'],
         ['kvadrilijonas', 'kvadrilijonų', 'kvadrilijonai'],
         ['kvintilijonas', 'kvintilijonų', 'kvintilijonai'],
         ['sikstilijonas', 'sikstilijonų', 'sikstilijonai'],
@@ -108,9 +108,9 @@ class LithuanianDictionary implements Dictionary
     public function getCorrespondingHundred(int $hundred): string
     {
         if ($hundred === 1) {
-            return static::$hundreds[0];
+            return 'šimtas';
         }
 
-        return self::$units[$hundred] . ' ' . static::$hundreds[1];
+        return self::$units[$hundred] . ' šimtai';
     }
 }
