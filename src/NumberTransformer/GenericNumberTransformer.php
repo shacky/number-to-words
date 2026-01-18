@@ -13,11 +13,11 @@ use NumberToWords\Service\NumberToTripletsConverter;
 class GenericNumberTransformer implements NumberTransformer
 {
     private Dictionary $dictionary;
-    private ?TripletTransformer $tripletTransformer;
-    private ?PowerAwareTripletTransformer $powerAwareTripletTransformer;
+    private ?TripletTransformer $tripletTransformer = null;
+    private ?PowerAwareTripletTransformer $powerAwareTripletTransformer = null;
     private NumberToTripletsConverter $numberToTripletsConverter;
-    private ?ExponentInflector $exponentInflector;
-    private ?ExponentGetter $exponentGetter;
+    private ?ExponentInflector $exponentInflector = null;
+    private ?ExponentGetter $exponentGetter = null;
     private ?string $wordsSeparator = null;
     private ?string $exponentSeparator = null;
 
@@ -48,7 +48,7 @@ class GenericNumberTransformer implements NumberTransformer
         $triplets = $this->numberToTripletsConverter->convertToTriplets($number);
         $maxPower = count($triplets) - 1;
         $nonZeroTripletCount = count(array_filter($triplets, fn($t) => $t > 0));
-        
+
         // Build an associative array of all triplets indexed by power (for context-aware transformers)
         $allTripletsWithPowers = [];
         foreach ($triplets as $i => $triplet) {
@@ -59,7 +59,7 @@ class GenericNumberTransformer implements NumberTransformer
         foreach ($triplets as $i => $triplet) {
             if ($triplet > 0) {
                 $power = count($triplets) - $i - 1;
-                
+
                 if ($this->tripletTransformer !== null) {
                     $words[] = $this->tripletTransformer->transformToWords($triplet);
                 }

@@ -2,14 +2,24 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Language\Swahili\SwahiliDictionary;
+use NumberToWords\Language\Swahili\SwahiliNumberToTripletsConverter;
+use NumberToWords\Language\Swahili\SwahiliTripletTransformer;
 
 class SwahiliNumberTransformer implements NumberTransformer
 {
     public function toWords(int $number): string
     {
-        $converter = new Words();
+        $dictionary = new SwahiliDictionary();
+        $numberToTripletsConverter = new SwahiliNumberToTripletsConverter();
+        $tripletTransformer = new SwahiliTripletTransformer($dictionary);
 
-        return $converter->transformToWords($number, 'sw');
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy(', ')
+            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->build();
+
+        return $numberTransformer->toWords($number);
     }
 }
