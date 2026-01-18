@@ -6,6 +6,7 @@ trait ManagesLocaleAlias
 {
     private array $aliasedLocale = [
         'fr_FR' => 'fr',
+        'pt_PT' => 'pt',
     ];
 
     private function resolveAlias(string $alias): string

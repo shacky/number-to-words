@@ -2,9 +2,9 @@
 
 namespace NumberToWords\Concerns;
 
+use NumberToWords\Exception\InvalidArgumentException;
 use NumberToWords\Exception\NumberToWordsException;
 use NumberToWords\NumberTransformer as Transformer;
-use NumberToWords\Exception\InvalidArgumentException;
 use NumberToWords\NumberTransformer\NumberTransformer;
 
 trait ManagesNumberTransformers
@@ -37,7 +37,7 @@ trait ManagesNumberTransformers
         'nl' => Transformer\DutchNumberTransformer::class,
         'pl' => Transformer\PolishNumberTransformer::class,
         'pt_BR' => Transformer\PortugueseBrazilianNumberTransformer::class,
-        'pt_PT' => Transformer\PortugueseNumberTransformer::class,
+        'pt' => Transformer\PortugueseNumberTransformer::class,
         'ro' => Transformer\RomanianNumberTransformer::class,
         'sr' => Transformer\SerbianNumberTransformer::class,
         'ru' => Transformer\RussianNumberTransformer::class,

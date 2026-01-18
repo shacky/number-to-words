@@ -30,6 +30,7 @@ class LocaleAliasTest extends TestCase
     {
         return [
             ['fr', 'fr_FR'],
+            ['pt', 'pt_PT'],
         ];
     }
 }

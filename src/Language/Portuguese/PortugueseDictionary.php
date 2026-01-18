@@ -6,7 +6,7 @@ use NumberToWords\Language\Dictionary;
 
 class PortugueseDictionary implements Dictionary
 {
-    public const LOCALE = 'pt_PT';
+    public const LOCALE = 'pt';
     public const LANGUAGE_NAME = 'Portuguese';
     public const LANGUAGE_NAME_NATIVE = 'Português';
 

@@ -3,8 +3,8 @@
 namespace NumberToWords\Concerns;
 
 use NumberToWords\CurrencyTransformer as Transformer;
-use NumberToWords\Exception\InvalidArgumentException;
 use NumberToWords\CurrencyTransformer\CurrencyTransformer;
+use NumberToWords\Exception\InvalidArgumentException;
 use NumberToWords\Exception\NumberToWordsException;
 
 trait ManagesCurrencyTransformers
@@ -29,7 +29,7 @@ trait ManagesCurrencyTransformers
         'ms' => Transformer\MalaysianCurrencyTransformer::class,
         'pl' => Transformer\PolishCurrencyTransformer::class,
         'pt_BR' => Transformer\PortugueseBrazilianCurrencyTransformer::class,
-        'pt_PT' => Transformer\PortugueseCurrencyTransformer::class,
+        'pt' => Transformer\PortugueseCurrencyTransformer::class,
         'ro' => Transformer\RomanianCurrencyTransformer::class,
         'ru' => Transformer\RussianCurrencyTransformer::class,
         'sk' => Transformer\SlovakCurrencyTransformer::class,
