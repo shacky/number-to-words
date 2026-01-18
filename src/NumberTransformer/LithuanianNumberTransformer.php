@@ -2,14 +2,29 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Language\Lithuanian\LithuanianDictionary;
+use NumberToWords\Language\Lithuanian\LithuanianExponentInflector;
+use NumberToWords\Language\Lithuanian\LithuanianNounGenderInflector;
+use NumberToWords\Language\Lithuanian\LithuanianTripletTransformer;
+use NumberToWords\NumberTransformer\NumberTransformerBuilder;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class LithuanianNumberTransformer implements NumberTransformer
 {
     public function toWords(int $number): string
     {
-        $converter = new Words();
+        $dictionary = new LithuanianDictionary();
+        $numberToTripletsConverter = new NumberToTripletsConverter();
+        $tripletTransformer = new LithuanianTripletTransformer($dictionary);
+        $exponentInflector = new LithuanianExponentInflector(new LithuanianNounGenderInflector());
 
-        return $converter->transformToWords($number, 'lt');
+        $numberTransformer = (new NumberTransformerBuilder())
+            ->withDictionary($dictionary)
+            ->withWordsSeparatedBy(' ')
+            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->inflectExponentByNumbers($exponentInflector)
+            ->build();
+
+        return $numberTransformer->toWords($number);
     }
 }
