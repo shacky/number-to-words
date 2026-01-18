@@ -50,13 +50,23 @@ class FrenchDictionary implements Dictionary
     ];
 
     public static array $currencyNames = [
-        'EUR' => [['euro', 'euros'], ['centime', 'centimes']],
-        'JPY' => [['yen', 'yens'], ['sen', 'sens']],
-        'XPF' => [['franc CFP', 'francs CFP'], ['centime', 'centimes']],
         'AUD' => [['dollar australien', 'dollars australiens'], ['cent', 'cents']],
         'CAD' => [['dollar canadien', 'dollars canadiens'], ['cent', 'cents']],
-        'USD' => [['dollar américain', 'dollars américains'], ['cent', 'cents']],
+        'CHF' => [['franc suisse', 'francs suisses'], ['centime', 'centimes']],
+        'CNY' => [['yuan', 'yuans'], ['fen', 'fens']],
+        'DZD' => [['dinar', 'dinars'], ['centime', 'centimes']],
+        'EUR' => [['euro', 'euros'], ['centime', 'centimes']],
         'GBP' => [['pound', 'pounds'], ['penny', 'pence']],
+        'JPY' => [['yen', 'yens'], ['sen', 'sens']],
+        'LYD' => [['dinar', 'dinars'], ['centime', 'centimes']],
+        'MAD' => [['dirham', 'dirhams'], ['centime', 'centimes']],
+        'MRO' => [['ouguiya', 'ouguiyas'], ['khoums', 'khoums']],
+        'MXN' => [['peso mexicain', 'pesos mexicains'], ['centavo']],
+        'TND' => [['dinar', 'dinars'], ['millime', 'millimes']],
+        'USD' => [['dollar américain', 'dollars américains'], ['cent', 'cents']],
+        'XAF' => [['franc CFA', 'francs CFA'], ['centime', 'centimes']],
+        'XOF' => [['franc CFA', 'francs CFA'], ['centime', 'centimes']],
+        'XPF' => [['franc CFP', 'francs CFP'], ['centime', 'centimes']],
     ];
 
     public function getZero(): string
