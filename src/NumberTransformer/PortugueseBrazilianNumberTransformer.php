@@ -5,7 +5,7 @@ namespace NumberToWords\NumberTransformer;
 use NumberToWords\Language\PortugueseBrazilian\PortugueseBrazilianDictionary;
 use NumberToWords\Language\PortugueseBrazilian\PortugueseBrazilianExponentInflector;
 use NumberToWords\Language\PortugueseBrazilian\PortugueseBrazilianTripletTransformer;
-use NumberToWords\NumberTransformer\NumberTransformerBuilder;
+use NumberToWords\Service\NumberToTripletsConverter;
 
 class PortugueseBrazilianNumberTransformer implements NumberTransformer
 {
@@ -14,11 +14,15 @@ class PortugueseBrazilianNumberTransformer implements NumberTransformer
         $dictionary = new PortugueseBrazilianDictionary();
         $tripletTransformer = new PortugueseBrazilianTripletTransformer($dictionary);
         $exponentInflector = new PortugueseBrazilianExponentInflector();
+        $numberToTripletsConverter = new NumberToTripletsConverter();
 
-        return (new NumberTransformerBuilder())
+        $numberTransformer = (new NumberTransformerBuilder())
             ->withDictionary($dictionary)
-            ->withTripletTransformer($tripletTransformer)
-            ->withExponentInflector($exponentInflector)
-            ->transformToWords($number);
+            ->withWordsSeparatedBy(' ')
+            ->transformNumbersBySplittingIntoPowerAwareTriplets($numberToTripletsConverter, $tripletTransformer)
+            ->inflectExponentByNumbers($exponentInflector)
+            ->build();
+
+        return $numberTransformer->toWords($number);
     }
 }

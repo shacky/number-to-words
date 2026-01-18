@@ -19,24 +19,53 @@ class PortugueseBrazilianTripletTransformer implements PowerAwareTripletTransfor
             return null;
         }
 
-        // Special case: exactly 100
-        if ($number === 100) {
-            return 'cem';
-        }
-
         $units = $number % 10;
         $tens = (int) ($number / 10) % 10;
         $hundreds = (int) ($number / 100) % 10;
-
         $words = [];
+
+        // Determine if we need a leading conjunction "e" before this triplet
+        $needsConjunction = false;
+
+        // Are there higher powers with non-zero triplets?
+        $hasHigherPowers = false;
+        foreach ($allTriplets as $p => $value) {
+            if ($p > $power && $value > 0) {
+                $hasHigherPowers = true;
+                break;
+            }
+        }
+
+        if ($hasHigherPowers && ($number < 100 || ($number % 100 === 0 && $number > 0))) {
+            if ($power === 0) {
+                $needsConjunction = true;
+            } else {
+                $isLastNonZero = true;
+                for ($lower = $power - 1; $lower >= 0; $lower--) {
+                    if (isset($allTriplets[$lower]) && $allTriplets[$lower] > 0) {
+                        $isLastNonZero = false;
+                        break;
+                    }
+                }
+
+                if ($isLastNonZero) {
+                    $needsConjunction = true;
+                }
+            }
+        }
 
         // Hundreds
         if ($hundreds > 0) {
-            $words[] = $this->dictionary->getCorrespondingHundred($hundreds);
+            // "cem" only for exactly 100, otherwise "cento"
+            if ($number === 100) {
+                $words[] = 'cem';
+            } else {
+                $words[] = $this->dictionary->getCorrespondingHundred($hundreds);
+            }
         }
 
-        // Teens (11-19)
-        if ($tens === 1 && $units > 0) {
+        // Teens (10-19)
+        if ($tens === 1) {
             $words[] = $this->dictionary->getCorrespondingTeen($units);
         } else {
             // Tens
@@ -45,31 +74,15 @@ class PortugueseBrazilianTripletTransformer implements PowerAwareTripletTransfor
             }
 
             // Units
-            if ($units > 0 && $tens !== 1) {
+            if ($units > 0) {
                 $words[] = $this->dictionary->getCorrespondingUnit($units);
             }
         }
 
         $result = implode(' e ', array_filter($words));
 
-        // Check if we need to prepend " e " for the last non-zero triplet
-        // This happens when:
-        // 1. Current triplet value < 100 OR is an exact hundred (e.g., 100, 200, 300)
-        // 2. All lower powers (powers < current power) are zero
-        // 3. Current power > 0 (not the units triplet)
-        if ($power > 0 && ($number < 100 || $number % 100 === 0)) {
-            // Check if all lower powers are zero
-            $allLowerPowersZero = true;
-            for ($p = 0; $p < $power; $p++) {
-                if (isset($allTriplets[$p]) && $allTriplets[$p] !== 0) {
-                    $allLowerPowersZero = false;
-                    break;
-                }
-            }
-
-            if ($allLowerPowersZero) {
-                $result = ' e ' . $result;
-            }
+        if ($needsConjunction) {
+            $result = 'e ' . $result;
         }
 
         return $result;

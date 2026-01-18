@@ -29,15 +29,28 @@ class PortugueseBrazilianExponentInflector implements PowerAwareExponentInflecto
         18 => ['septendecilhão', 'septendecilhões'],
     ];
 
-    public function inflectExponent(int $power, int $number): string
+    public function inflectExponent(int $number, int $power): string
     {
-        if (!isset(self::$exponents[$power])) {
+        return $this->inflectExponentWithContext($number, $power, $power, 1);
+    }
+
+    public function inflectExponentWithContext(
+        int $number,
+        int $power,
+        int $maxPower,
+        int $nonZeroTripletCount
+    ): string {
+        if ($power === 0 || !isset(self::$exponents[$power])) {
             return '';
         }
 
-        $exponent = self::$exponents[$power];
-        
-        // Use plural form when number > 1
-        return $number > 1 ? $exponent[1] : $exponent[0];
+        [$singular, $plural] = self::$exponents[$power];
+
+        // "mil" never pluralizes; others pluralize when the triplet is > 1
+        if ($power === 1) {
+            return $singular;
+        }
+
+        return $number > 1 ? $plural : $singular;
     }
 }
