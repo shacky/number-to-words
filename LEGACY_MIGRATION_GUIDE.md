@@ -50,6 +50,8 @@ Need complete migration (no Language/ folder exists):
 
 ## Migration Steps
 
+**Currency coverage:** when migrating a language, ensure its `*Dictionary.php` defines the full currency set present in `EnglishDictionary::$currencyNames`, with localized major/minor unit names (singular/plural) sourced from the canonical Google currencies CSV (`https://developers.google.com/public-data/docs/canonical/currencies_csv?hl=<language_code>`). Do not copy English names; add proper localized labels for both units and subunits. Keep original translations from legacy file if exists.
+
 ### For Simple Languages (follows standard pattern)
 
 1. **Create Language Directory**
