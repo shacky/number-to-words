@@ -1,9 +1,6 @@
 # PHP Number to words converter
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/kwn/number-to-words/tree/master.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/kwn/number-to-words/tree/master)
-[![Code Climate](https://codeclimate.com/github/kwn/number-to-words/badges/gpa.svg)](https://codeclimate.com/github/kwn/number-to-words)
-[![Test Coverage](https://codeclimate.com/github/kwn/number-to-words/badges/coverage.svg)](https://codeclimate.com/github/kwn/number-to-words/coverage)
-[![Latest Stable Version](https://poser.pugx.org/kwn/number-to-words/v/stable)](https://packagist.org/packages/kwn/number-to-words)
+[![Latest Stable Version](https://poser.pugx.org/shacky/number-to-words/v/stable)](https://packagist.org/packages/shacky/number-to-words)
 
 Welcome to `number-to-words`, a PHP utility that seamlessly transforms numeric values into their corresponding words. Effortlessly convert numbers, such as 123, into expressive and readable formats like "one hundred and twenty-three" with just a few lines of code.
 
@@ -12,7 +9,7 @@ Welcome to `number-to-words`, a PHP utility that seamlessly transforms numeric v
 Add package to your composer.json by running:
 
 ```
-$ composer require kwn/number-to-words
+$ composer require shacky/number-to-words
 ```
 
 ## Usage
@@ -146,3 +143,4 @@ A: If you come across a bug, please open an issue on our GitHub repository. As I
 **Q: My language is missing. Could it be added?**
 
 A: There's a high chance I don't know your language. Feel free to implement the missing language and open a pull request. You can use the existing languages as a reference.
+
