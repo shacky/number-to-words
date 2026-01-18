@@ -88,9 +88,10 @@ Note: The Currency Transformer within this library processes integers; ensure yo
 | Dutch                | nl         | +      | -        |       |
 | English              | en         | +      | +        |       |
 | Estonian             | et         | +      | -        |       |
+| French               | fr         | +      | +        | fr_FR |
 | Georgian             | ka         | +      | +        |       |
 | German               | de         | +      | +        |       |
-| French               | fr         | +      | +        | fr_FR |
+| Hebrew               | he         | +      | +        |       |
 | Hungarian            | hu         | +      | +        |       |
 | Indonesian           | id         | +      | +        |       |
 | Italian              | it         | +      | -        |       |

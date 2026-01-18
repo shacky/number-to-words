@@ -25,6 +25,7 @@ trait ManagesNumberTransformers
         'fa' => Transformer\PersianNumberTransformer::class,
         'fr' => Transformer\FrenchNumberTransformer::class,
         'fr_BE' => Transformer\FrenchBelgianNumberTransformer::class,
+        'he' => Transformer\HebrewNumberTransformer::class,
         'hu' => Transformer\HungarianNumberTransformer::class,
         'id' => Transformer\IndonesianNumberTransformer::class,
         'it' => Transformer\ItalianNumberTransformer::class,
