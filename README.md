@@ -4,6 +4,8 @@
 
 Welcome to `number-to-words`, a PHP utility that seamlessly transforms numeric values into their corresponding words. Effortlessly convert numbers, such as 123, into expressive and readable formats like "one hundred and twenty-three" with just a few lines of code.
 
+Based on work: [kwn/number-to-words](https://github.com/kwn/number-to-words)
+
 ## Installation
 
 Add package to your composer.json by running:
@@ -143,4 +145,5 @@ A: If you come across a bug, please open an issue on our GitHub repository. As I
 **Q: My language is missing. Could it be added?**
 
 A: There's a high chance I don't know your language. Feel free to implement the missing language and open a pull request. You can use the existing languages as a reference.
+
 
