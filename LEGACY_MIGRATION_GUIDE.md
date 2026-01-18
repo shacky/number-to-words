@@ -5,7 +5,7 @@ This document guides the migration of language implementations from `src/Legacy/
 
 ## Migration Status
 
-### ✅ Completed Migrations (29 languages)
+### ✅ Completed Migrations (30 languages)
 These languages now use `NumberTransformerBuilder` exclusively. Legacy implementations have been removed:
 
 **Originally Migrated:**
@@ -40,9 +40,8 @@ These have `Language/` components but `NumberTransformer` still uses Legacy:
 - **Bulgarian** - Has all components but needs architectural enhancement for conjunction logic
 - **Romanian** - Only has Dictionary
 
-### ❌ Pending Migrations (3 languages)
+### ❌ Pending Migrations (2 languages)
 Need complete migration (no Language/ folder exists):
-- Malay (Ms)
 - Swahili (Sw)
 - Yoruba (Yo)
 
