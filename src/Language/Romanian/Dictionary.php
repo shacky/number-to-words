@@ -3,13 +3,17 @@
 namespace NumberToWords\Language\Romanian;
 
 use NumberToWords\Grammar\Gender;
+use NumberToWords\Language\Dictionary as DictionaryInterface;
 
-class Dictionary
+class Dictionary implements DictionaryInterface
 {
     public const LOCALE = 'ro';
     public const LANGUAGE_NAME = 'Romanian';
     public const LANGUAGE_NAME_NATIVE = 'Română';
     public const MINUS = 'minus';
+    public const WORD_SEPARATOR = ' ';
+    public const MANY_PART = 'de';
+    public const AND = 'și';
 
     public static int $thresholdFew = 1;
     public static int $thresholdMany = 19;
@@ -63,10 +67,6 @@ class Dictionary
     ];
 
     public static string $infinity = 'infinit';
-
-    public static string $and = 'și';
-
-    public static string $wordSeparator = ' ';
 
     public static array $currencyNames = [
         'AUD' => [
@@ -135,10 +135,6 @@ class Dictionary
         ],
     ];
 
-    public static string $manyPart = 'de';
-
-    public static string $minus = 'minus';
-
     public static array $exponent = [
         0 => '',
         2 => ['sută', 'sute', Gender::GENDER_FEMININE],
@@ -193,4 +189,138 @@ class Dictionary
         147 => ['octocvadragintilion', 'octocvadragintilioane', Gender::GENDER_NEUTER],
         150 => ['novemcvadragintilion', 'novemcvadragintilioane', Gender::GENDER_NEUTER],
     ];
+
+    public function getZero(): string
+    {
+        return static::$numbers[0];
+    }
+
+    public function getMinus(): string
+    {
+        return self::MINUS;
+    }
+
+    public function getWordSeparator(): string
+    {
+        return self::WORD_SEPARATOR;
+    }
+
+    public function getAnd(): string
+    {
+        return self::AND;
+    }
+
+    public function getManyPart(): string
+    {
+        return self::MANY_PART;
+    }
+
+    public function getCorrespondingUnit(int $unit): string
+    {
+        return $this->getNumberInflectionForGender(self::$numbers[$unit], Gender::GENDER_ABSTRACT, true);
+    }
+
+    public function getCorrespondingTen(int $ten): string
+    {
+        return self::$numbers[$ten];
+    }
+
+    public function getCorrespondingTeen(int $teen): string
+    {
+        return $this->getNumberInflectionForGender(self::$numbers[$teen], Gender::GENDER_ABSTRACT, true);
+    }
+
+    public function getCorrespondingHundred(int $hundred): string
+    {
+        $hundreds = (int) ($hundred / 100);
+        $hundredNoun = $this->getExponentByPower(2);
+
+        $parts = [];
+        $parts[] = $this->getNumberInflectionForGender(self::$numbers[$hundreds], Gender::GENDER_FEMININE, true);
+        $parts[] = $this->getNounDeclensionForNumber($hundreds, $hundredNoun);
+
+        return implode(self::WORD_SEPARATOR, $parts);
+    }
+
+    public function getExponentByPower(int $power): ?array
+    {
+        return self::$exponent[$power] ?? null;
+    }
+
+    public function getGenderForPower(int $power): int
+    {
+        $exponent = $this->getExponentByPower($power * 3);
+
+        if (!is_array($exponent)) {
+            return Gender::GENDER_ABSTRACT;
+        }
+
+        return $exponent[2] ?? Gender::GENDER_ABSTRACT;
+    }
+
+    public function getNounDeclensionForNumber(int $number, array $noun, bool $forcePlural = false): string
+    {
+        $pluralRule = $this->getPluralRule($number);
+
+        if ($pluralRule === 'o' && $forcePlural) {
+            $pluralRule = 'f';
+        }
+
+        if ($pluralRule === 'o') {
+            return $noun[0];
+        }
+
+        if ($pluralRule === 'f') {
+            return $noun[1];
+        }
+
+        return self::MANY_PART . self::WORD_SEPARATOR . $noun[1];
+    }
+
+    public function getPluralRule(int $number): string
+    {
+        if ($number === self::$thresholdFew) {
+            return 'o';
+        }
+
+        if ($number === 0) {
+            return 'f';
+        }
+
+        $uz = $number % 100;
+
+        if ($uz === 0) {
+            return 'm';
+        }
+
+        if ($uz > self::$thresholdMany) {
+            return 'm';
+        }
+
+        return 'f';
+    }
+
+    public function getNumberInflectionForGender($numberAtom, int $gender, bool $asNoun): string
+    {
+        $numberNames = $numberAtom;
+
+        if (!is_array($numberAtom)) {
+            $numberNames = [$numberAtom, $numberAtom, $numberAtom, $numberAtom];
+        } elseif (count($numberAtom) === 2) {
+            $numberNames = [
+                $numberAtom[0],
+                $numberAtom[1],
+                $numberAtom[1],
+                $numberAtom[0],
+            ];
+        }
+
+        $numberName = $numberNames[$gender];
+
+        if (!is_array($numberName)) {
+            return $numberName;
+        }
+
+        return $numberName[(int) $asNoun];
+    }
 }

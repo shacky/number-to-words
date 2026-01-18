@@ -115,6 +115,17 @@ Note: The Currency Transformer within this library processes integers; ensure yo
 | Uzbek                | uz         | +      | +        |       |
 | Yoruba               | yo         | +      | +        |       |
 
+## Adding a new language
+
+New languages should be built with `NumberTransformerBuilder` and language-specific components under `src/Language/<Language>/`.
+
+- Dictionary: implement `Dictionary` and expose zero/minus, units, teens, tens, hundreds, and exponent names. Reuse any existing legacy data. Keep word separator and conjunction in the dictionary for consistent joins.
+- Triplet transformer: implement `TripletTransformer` or `PowerAwareTripletTransformer` to render 0-999. Use grammatical gender helpers if the language needs gender-specific forms.
+- Exponent handler: add an `ExponentInflector` (or `PowerAwareExponentInflector`) to inflect thousand/million/etc. by number. Use `ExponentGetter` only for fixed names.
+- Currency coverage: for each language dictionary, include all currencies present in `EnglishDictionary::$currencyNames`, with localized singular/plural names for major/minor units. You can use source translations from the canonical Google currencies CSV (`https://developers.google.com/public-data/docs/canonical/currencies_csv?hl=<language_code>`).
+- Transformer wiring: create `NumberTransformer/<Language>NumberTransformer.php` and, if needed, `CurrencyTransformer/<Language>CurrencyTransformer.php` using `NumberTransformerBuilder` with the language dictionary, triplet transformer, and exponent inflector. For currency, split amounts with `CurrencySubunitSplitter` and declense currency nouns by number/gender.
+- Tests: add or update language-specific tests under `tests/NumberTransformer/` and `tests/CurrencyTransformer/`. Run `vendor/bin/phpunit --filter <Language>` during development and `vendor/bin/phpunit --no-coverage` before submitting.
+
 ## Contributors
 
 Some transformers were ported from the `pear/Numbers_Words` library. Others were created by [contributors](https://github.com/kwn/number-to-words/graphs/contributors). Thank you!
